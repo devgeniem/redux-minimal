@@ -2,9 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Table, Pagination } from "react-bootstrap";
+import { translate } from 'react-i18next';
 import { UserListElement, UserDeletePrompt } from "../../components";
 
 // User list component
+//@translate(['list_header'])
 class UserList extends React.Component {
   // constructor
   constructor(props) {

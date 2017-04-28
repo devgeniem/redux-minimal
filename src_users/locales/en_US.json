@@ -1,1 +1,8 @@
-{}
+{
+  "list_header": {
+    "username": "Username",
+    "job": "Job",
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}
