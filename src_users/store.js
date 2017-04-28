@@ -7,11 +7,13 @@ import { reducers } from "./reducers/index";
 import { sagas } from "./sagas/index";
 
 // add the middlewares
-let middlewares = [];
+const middlewares = [];
 
 // add the router middleware
 const browserHistory = createHistory();
-middlewares.push(routerMiddleware(browserHistory));
+const browserHistoryMiddleware = routerMiddleware(browserHistory);
+
+middlewares.push(browserHistoryMiddleware);
 
 // add the saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -21,7 +23,6 @@ middlewares.push(sagaMiddleware);
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(freeze);
 }
-
 // apply the middleware
 let middleware = applyMiddleware(...middlewares);
 
@@ -32,8 +33,7 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
 
 // create the store
 const store = createStore(reducers, middleware);
-const history = syncHistoryWithStore(browserHistory, store);
 sagaMiddleware.run(sagas);
 
 // export
-export { store, history };
+export { store };

@@ -67,6 +67,7 @@ class UserList extends React.Component {
 
   // change the user lists' current page
   changePage(page) {
+    console.log('page', this.props);
     this.props.dispatch(push('/?page=' + page));
   }
 
@@ -102,7 +103,8 @@ class UserList extends React.Component {
 }
 
 // export the connected class
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  console.log(ownProps.match);
   return {
     users: state.users,
 

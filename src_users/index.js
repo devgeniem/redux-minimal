@@ -13,5 +13,5 @@ ReactDOM.render(
       {router}
     </Provider>
   </I18nextProvider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
