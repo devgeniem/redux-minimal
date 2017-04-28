@@ -6,7 +6,7 @@ import { translate } from 'react-i18next';
 import { UserListElement, UserDeletePrompt } from "../../components";
 
 // User list component
-//@translate(['list_header'])
+@translate(['list_header'])
 class UserList extends React.Component {
   // constructor
   constructor(props) {
@@ -28,7 +28,7 @@ class UserList extends React.Component {
   // render
   render() {
     // pagination
-    const {users, page} = this.props;
+    const {users, page, t} = this.props;
     const per_page = 10;
     const pages = Math.ceil(users.length / per_page);
     const start_offset = (page - 1) * per_page;
@@ -41,10 +41,10 @@ class UserList extends React.Component {
           <thead>
           <tr>
             <th>ID</th>
-            <th>Username</th>
-            <th>Job</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>{t('username')}</th>
+            <th>{t('job')}</th>
+            <th>{t('edit')}</th>
+            <th>{t('delete')}</th>
           </tr>
           </thead>
           <tbody>
