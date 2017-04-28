@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, NavItem, Glyphicon, Button } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
-import './menu.scss';
+import './Menu.styles.scss';
 
 // Menu component
 export default class Menu extends React.Component {
