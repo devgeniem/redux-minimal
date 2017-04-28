@@ -9,7 +9,7 @@ global.app_root = app_root; // the app root folder, needed by the other webpack 
 module.exports = {
   entry: [
     // http://gaearon.github.io/react-hot-loader/getstarted/
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:1337',
     'webpack/hot/only-dev-server',
     'babel-polyfill',
     __dirname + '/' + app_root + '/index.js',
@@ -36,6 +36,11 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       }
     ],
+  },
+  resolve: {
+    alias: {
+      commonStyles: path.resolve(__dirname,  app_root + '/stylesheets/common.scss')
+    }
   },
   devServer: {
     contentBase: __dirname + '/public',
