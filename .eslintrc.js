@@ -6,6 +6,7 @@ module.exports = {
         "import"
     ],
     "env": {
-        "browser": true
+        "browser": true,
+        "mocha": true,
     }
 };
