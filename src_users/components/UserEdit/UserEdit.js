@@ -68,7 +68,7 @@ const UserEditForm = reduxForm({
 
 // export the connected class
 function mapStateToProps(state, own_props) {
-  const user = state.users.find(x => Number(x.id) === Number(own_props.params.id)) || {};
+  const user = state.users.find(x => Number(x.id) === Number(own_props.match.params.id)) || {};
   return {
     user: user,
     initialValues: user,
