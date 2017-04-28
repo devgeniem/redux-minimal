@@ -11,23 +11,16 @@ export class UserEdit extends React.Component {
   // constructor
   constructor(props) {
     super(props);
-
     // bind <this> to the event method
     this.formSubmit = this.formSubmit.bind(this);
   }
 
   // render
   render() {
-    const {user, handleSubmit, error, invalid, submitting} = this.props;
     return (
       <div className="page-user-edit">
-        <PageHeader>{'User ' + (user.id ? 'edit' : 'add')}</PageHeader>
-        <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="username" label="Username" doValidate={true}/>
-          <Field component={FormField} name="job" label="Job"/>
-          <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
-            buttonSave="Save User"/>
-        </Form>
+        <PageHeader>User add / edit</PageHeader>
+        
       </div>
     );
   }
@@ -69,10 +62,5 @@ const UserEditForm = reduxForm({
 
 // export the connected class
 function mapStateToProps(state, own_props) {
-  const user = state.users.find(x => Number(x.id) === Number(own_props.params.id)) || {};
-  return {
-    user: user,
-    initialValues: user,
-  };
 }
-export default connect(mapStateToProps)(UserEditForm);
+export default connect()(UserEdit);

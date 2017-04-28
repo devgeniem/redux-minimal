@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-bootstrap";
 import Menu from "./common/Menu";
+import UserList from "./common/UserList";
 import "../stylesheets/main.scss";
 
 // App component
@@ -16,11 +17,6 @@ export class App extends React.Component {
   render() {
     // show the loading state while we wait for the app to load
     const {users, children} = this.props;
-    if (!users.length) {
-      return (
-        <ProgressBar active now={100}/>
-      );
-    }
 
     // render
     return (
@@ -29,7 +25,9 @@ export class App extends React.Component {
           <Menu/>
         </div>
         <div>
-          {children}
+          <div className="page-home">
+            <UserList/>
+          </div>
         </div>
         <div className="footer">
           <img src="/media/logo.svg"/>

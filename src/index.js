@@ -1,14 +1,27 @@
 import "babel-polyfill";
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { store } from "./store.js";
-import { router } from "./router.js";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import {
+  BrowserRouter as Router,
+  Route,
+ } from 'react-router-dom';
+import { reducers } from "./reducers/index";
 
-// render the main component
+import App from './components/App';
+import Home from './components/Home';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+const store = createStoreWithMiddleware(reducers);
+
 ReactDOM.render(
   <Provider store={store}>
-    {router}
-  </Provider>,
-  document.getElementById('app')
-);
+    <Router>
+      <div>
+        <Route exact path="/" component={Home}>
+        </Route>
+      </div>
+    </Router>
+  </Provider>
+  , document.getElementById('app'));

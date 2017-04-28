@@ -27,7 +27,8 @@ export class UserList extends React.Component {
   // render
   render() {
     // pagination
-    const {users, page} = this.props;
+    const { page } = this.props;
+    const users = [];
     const per_page = 10;
     const pages = Math.ceil(users.length / per_page);
     const start_offset = (page - 1) * per_page;
@@ -111,7 +112,7 @@ function mapStateToProps(state) {
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     // react-router-redux wants you to get the url data by passing the props through a million components instead of
     // reading it directly from the state, which is basically why you store the url data in the state (to have access to it)
-    page: Number(state.routing.locationBeforeTransitions.query.page) || 1,
+    page: Number(1) || 1,
   };
 }
 export default connect(mapStateToProps)(UserList);
