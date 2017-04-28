@@ -3,17 +3,13 @@ import {
   BrowserRouter as Router,
   Route,
  } from 'react-router-dom';
-import App from "./components/App";
-import Home from "./components/Home";
-import UserEdit from "./components/UserEdit";
-import NotFound from "./components/NotFound";
+import App from "./containers/App/App";
 
 // build the router
 const router = (
   <Router>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/user-edit/:id" component={UserEdit}/>
     </div>
   </Router>
 );

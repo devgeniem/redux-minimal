@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Field, SubmissionError, reduxForm } from "redux-form";
 import { PageHeader, Form } from "react-bootstrap";
-import FormField from "./common/FormField";
-import FormSubmit from "./common/FormSubmit";
+import { FormField, FormSubmit } from "../../components/";
 
 // User add/edit page component
 export class UserEdit extends React.Component {

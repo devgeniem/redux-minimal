@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, NavItem, Glyphicon } from "react-bootstrap";
+import { Nav, NavItem, Glyphicon, Button } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 
 // Menu component
@@ -21,6 +21,14 @@ export default class Menu extends React.Component {
         <NavItem href="http://redux-minimal.js.org/" target="_blank">
           redux-minimal
         </NavItem>
+        <div style={{marginLeft: '80%'}}>
+          <Button style={{ border: 'none' }} onClick={() => this.props.changeLanguage('fi')}>
+            FI
+          </Button>
+          <Button style={{ marginLeft: '20px', border: 'none' }} onClick={() => this.props.changeLanguage('en')}>
+            EN
+          </Button>
+        </div>
       </Nav>
     );
   }
