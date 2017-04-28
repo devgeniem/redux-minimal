@@ -3,6 +3,7 @@ import { FormGroup, FormControl, HelpBlock, Row, Col } from "react-bootstrap";
 
 // Form field component
 export default class FormField extends React.Component {
+
   // render
   render() {
     const {className, doValidate, meta} = this.props;
