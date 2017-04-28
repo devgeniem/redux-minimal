@@ -1,19 +1,18 @@
 {
-  "name": "redux-minimal",
+  "name": "silverplate",
   "version": "1.0.0",
-  "description": "Start building complex react-redux apps today, with this minimalist easy to understand starter kit (boilerplate)",
+  "description": "Simple React Redux boilerplate",
   "keywords": [
     "react",
     "redux",
-    "minimal",
+    "simple",
     "starter kit",
     "boilerplate"
   ],
   "main": "index.js",
-  "homepage": "http://redux-minimal.js.org/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/catalin-luntraru/redux-minimal"
+    "url": "https://github.com/devgeniem/silverplate"
   },
   "scripts": {
     "start": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 1337",
@@ -29,7 +28,7 @@
       "stage-1"
     ]
   },
-  "author": "Catalin Luntraru",
+  "author": "Geniem",
   "license": "MIT",
   "dependencies": {
     "i18next": "^8.0.0",
