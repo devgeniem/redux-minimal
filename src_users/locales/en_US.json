@@ -1,1 +1,16 @@
-{}
+{
+  "list_header": {
+    "username": "Username",
+    "job": "Job",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "list_button": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "menu": {
+    "home": "Home",
+    "add_user": "Add user"
+  }
+}

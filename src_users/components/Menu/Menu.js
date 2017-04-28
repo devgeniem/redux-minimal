@@ -1,22 +1,23 @@
 import React from "react";
 import { Nav, NavItem, Glyphicon, Button } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
-import './menu.scss';
+import './Menu.styles.scss';
+import { translate } from 'react-i18next';
 
-// Menu component
+@translate(['menu'])
 export default class Menu extends React.Component {
-  // render
   render() {
+    const { t } = this.props;
     return (
       <Nav bsStyle="pills" className="header-nav">
         <IndexLinkContainer to="/">
           <NavItem>
-            Home
+            {t('home')}
           </NavItem>
         </IndexLinkContainer>
         <LinkContainer to="/user-edit">
           <NavItem>
-            Add User <Glyphicon glyph="plus-sign"/>
+            {t('add_user')} <Glyphicon glyph="plus-sign"/>
           </NavItem>
         </LinkContainer>
         <div style={{marginLeft: '80%'}}>

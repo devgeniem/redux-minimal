@@ -20,5 +20,4 @@ const router = (
   </ConnectedRouter>
 );
 
-// export
 export { router };

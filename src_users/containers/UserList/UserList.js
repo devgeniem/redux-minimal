@@ -2,31 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Table, Pagination } from "react-bootstrap";
+import { translate } from 'react-i18next';
 import { UserListElement, UserDeletePrompt } from "../../components";
 
-// User list component
+@translate(['list_header'])
 class UserList extends React.Component {
-  // constructor
   constructor(props) {
     super(props);
 
-    // default ui local state
     this.state = {
       delete_show: false,
       delete_user: {},
     };
 
-    // bind <this> to the event method
     this.changePage = this.changePage.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.userDelete = this.userDelete.bind(this);
   }
 
-  // render
   render() {
     // pagination
-    const { users,page } = this.props;
+
+    const {users, page, t} = this.props;
     const per_page = 10;
     const pages = Math.ceil(users.length / per_page);
     const start_offset = (page - 1) * per_page;
@@ -38,10 +36,10 @@ class UserList extends React.Component {
           <thead>
           <tr>
             <th>ID</th>
-            <th>Username</th>
-            <th>Job</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>{t('username')}</th>
+            <th>{t('job')}</th>
+            <th>{t('edit')}</th>
+            <th>{t('delete')}</th>
           </tr>
           </thead>
           <tbody>

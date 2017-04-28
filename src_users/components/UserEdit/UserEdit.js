@@ -5,17 +5,13 @@ import { Field, SubmissionError, reduxForm } from "redux-form";
 import { PageHeader, Form } from "react-bootstrap";
 import { FormField, FormSubmit } from "../../components/";
 
-// User add/edit page component
 export class UserEdit extends React.Component {
-  // constructor
   constructor(props) {
     super(props);
 
-    // bind <this> to the event method
     this.formSubmit = this.formSubmit.bind(this);
   }
 
-  // render
   render() {
     const {user, handleSubmit, error, invalid, submitting} = this.props;
     return (
@@ -31,7 +27,6 @@ export class UserEdit extends React.Component {
     );
   }
 
-  // submit the form
   formSubmit(values) {
     const {dispatch} = this.props;
     return new Promise((resolve, reject) => {

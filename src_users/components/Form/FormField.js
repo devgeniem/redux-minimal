@@ -1,10 +1,8 @@
 import React, { PropTypes } from "react";
 import { FormGroup, FormControl, HelpBlock, Row, Col } from "react-bootstrap";
 
-// Form field component
 export default class FormField extends React.Component {
 
-  // render
   render() {
     const {className, doValidate, meta} = this.props;
     if (doValidate) {
@@ -54,7 +52,6 @@ export default class FormField extends React.Component {
   }
 }
 
-// prop checks
 FormField.propTypes = {
   meta: PropTypes.object,
   input: PropTypes.object,
