@@ -1,1 +1,16 @@
-{}
+{
+  "list_header": {
+    "username": "Käyttäjänimi",
+    "job": "Työ",
+    "edit": "Muokkaa",
+    "delete": "Poista"
+  },
+  "list_button": {
+    "edit": "Muokkaa",
+    "delete": "Poista"
+  },
+  "menu": {
+    "home": "Koti",
+    "add_user": "Lisää käyttäjä"
+  }
+}
