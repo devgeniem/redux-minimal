@@ -14,7 +14,6 @@ const router = (
     <div>
       <Route exact path="/" component={App} />
       <Route path="/user-edit/:id" component={UserEdit}/>
-      <Route path="/user-edit" component={UserEdit}/>
     </div>
   </Router>
 );

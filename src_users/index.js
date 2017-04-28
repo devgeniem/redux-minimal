@@ -9,13 +9,12 @@ import {
  } from 'react-router-dom';
 import { reducers } from "./reducers/index";
 import { router } from "./router";
+import { store } from "./store";
 
 import App from './components/App';
 import Home from './components/Home';
 import UserEdit from './components/UserEdit';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
   <Provider store={store}>

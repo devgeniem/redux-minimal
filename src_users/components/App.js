@@ -9,6 +9,7 @@ import "../stylesheets/main.scss";
 export class App extends React.Component {
   // pre-render logic
   componentWillMount() {
+    console.log('aloitus');
     // the first time we load the app, we need that users list
     this.props.dispatch({type: 'USERS_FETCH_LIST'});
   }
@@ -18,6 +19,11 @@ export class App extends React.Component {
     // show the loading state while we wait for the app to load
     const {users, children} = this.props;
 
+    if (!users.length) {
+      return (
+        <ProgressBar active now={100}/>
+      );
+    }
     // render
     return (
       <div className="container">
@@ -26,7 +32,7 @@ export class App extends React.Component {
         </div>
         <div>
           <div className="page-home">
-            <UserList/>
+            <UserList users={users} />
           </div>
         </div>
         <div className="footer">

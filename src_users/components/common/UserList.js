@@ -27,13 +27,11 @@ export class UserList extends React.Component {
   // render
   render() {
     // pagination
-    const { page } = this.props;
-    const users = [];
+    const { users,page } = this.props;
     const per_page = 10;
     const pages = Math.ceil(users.length / per_page);
     const start_offset = (page - 1) * per_page;
     let start_count = 0;
-
     // show the list of users
     return (
       <div>
