@@ -2,14 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-bootstrap";
 import Menu from "./common/Menu";
+import i18next from 'i18next';
 import "../stylesheets/main.scss";
 
 // App component
 export class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.changeLanguage = this.changeLanguage.bind(this);
+  }
+
   // pre-render logic
   componentWillMount() {
     // the first time we load the app, we need that users list
     this.props.dispatch({type: 'USERS_FETCH_LIST'});
+  }
+
+  changeLanguage(lang) {
+    console.log('lang', lang);
+    this.props.dispatch({type: 'SET_LANGUAGE', lang});
+    i18next.changeLanguage(lang);
   }
 
   // render
@@ -26,7 +40,7 @@ export class App extends React.Component {
     return (
       <div className="container">
         <div>
-          <Menu/>
+          <Menu changeLanguage={this.changeLanguage}/>
         </div>
         <div>
           {children}

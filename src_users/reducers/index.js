@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import users from "./users";
+import lang from "./lang";
 
 // main reducers
 export const reducers = combineReducers({
@@ -18,4 +19,5 @@ export const reducers = combineReducers({
     }
   }),
   users: users,
+  lang: lang
 });
