@@ -15,5 +15,4 @@ const router = (
   </Router>
 );
 
-// export
 export { router };

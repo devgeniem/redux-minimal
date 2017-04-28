@@ -3,10 +3,8 @@ import { Link } from "react-router";
 import { Button, Glyphicon } from "react-bootstrap";
 import { translate } from 'react-i18next';
 
-// User List Element component
 @translate(['list_button'])
 export default class UserListElement extends React.Component {
-  // render
   render() {
     const {user, showDelete, t} = this.props;
     return (
@@ -31,7 +29,6 @@ export default class UserListElement extends React.Component {
   }
 }
 
-// prop checks
 UserListElement.propTypes = {
   user: PropTypes.object.isRequired,
   showDelete: PropTypes.func.isRequired,

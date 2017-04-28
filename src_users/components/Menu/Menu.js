@@ -4,10 +4,8 @@ import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import './Menu.styles.scss';
 import { translate } from 'react-i18next';
 
-// Menu component
 @translate(['menu'])
 export default class Menu extends React.Component {
-  // render
   render() {
     const { t } = this.props;
     return (

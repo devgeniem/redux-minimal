@@ -5,27 +5,22 @@ import { Table, Pagination } from "react-bootstrap";
 import { translate } from 'react-i18next';
 import { UserListElement, UserDeletePrompt } from "../../components";
 
-// User list component
 @translate(['list_header'])
 class UserList extends React.Component {
-  // constructor
   constructor(props) {
     super(props);
 
-    // default ui local state
     this.state = {
       delete_show: false,
       delete_user: {},
     };
 
-    // bind <this> to the event method
     this.changePage = this.changePage.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.userDelete = this.userDelete.bind(this);
   }
 
-  // render
   render() {
     // pagination
     const {users, page, t} = this.props;

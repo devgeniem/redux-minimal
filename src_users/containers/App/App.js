@@ -5,7 +5,6 @@ import { Menu } from "../../components/";
 import i18next from 'i18next';
 import "../../stylesheets/main.scss";
 
-// App component
 class App extends React.Component {
 
   constructor(props) {
@@ -14,7 +13,6 @@ class App extends React.Component {
     this.changeLanguage = this.changeLanguage.bind(this);
   }
 
-  // pre-render logic
   componentWillMount() {
     // the first time we load the app, we need that users list
     this.props.dispatch({type: 'USERS_FETCH_LIST'});
@@ -26,7 +24,6 @@ class App extends React.Component {
     i18next.changeLanguage(lang);
   }
 
-  // render
   render() {
     // show the loading state while we wait for the app to load
     const {users, children} = this.props;
@@ -36,7 +33,6 @@ class App extends React.Component {
       );
     }
 
-    // render
     return (
       <div className="container">
         <div>
