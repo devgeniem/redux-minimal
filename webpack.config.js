@@ -1,10 +1,10 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-var app_root = 'src_users'; // the app root folder: src, src_users, etc
-var path = require('path');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const appRoot = 'src_users'; // the app root folder: src, src_users, etc
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-global.app_root = app_root; // the app root folder, needed by the other webpack configs
+global.appRoot = appRoot; // the app root folder, needed by the other webpack configs
 
 module.exports = {
   entry: [
@@ -12,10 +12,10 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:1337',
     'webpack/hot/only-dev-server',
     'babel-polyfill',
-    __dirname + '/' + app_root + '/index.js',
+    path.join(__dirname, appRoot, '/index.js'),
   ],
   output: {
-    path: __dirname + '/public/js',
+    path: path.join(__dirname, '/public/js'),
     publicPath: 'js/',
     filename: 'bundle.js',
   },
@@ -34,20 +34,21 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      }
+      },
     ],
   },
   resolve: {
     alias: {
-      commonStyles: path.resolve(__dirname,  app_root + '/stylesheets/common.scss')
-    }
+      commonStyles: path.resolve(__dirname, appRoot, 'stylesheets/common.scss'),
+    },
+    extensions: ['.js', '.jsx', '.json'],
   },
   devServer: {
-    contentBase: __dirname + '/public',
+    contentBase: path.join(__dirname, '/public'),
   },
   plugins: [
     new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
-      root: __dirname + '/public',
+      root: path.join(__dirname, '/public'),
       verbose: true,
       dry: false, // true for simulation
     }),

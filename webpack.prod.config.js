@@ -1,11 +1,12 @@
-var webpack = require("webpack");
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require("webpack");
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = require('./webpack.config.js');    // inherit from the main config file
 
 // disable the hot reload
 module.exports.entry = [
   'babel-polyfill',
-  __dirname + '/' + global.app_root + '/index.js'
+  path.join(__dirname, global.app_root, 'index.js'),
 ];
 
 // production env
@@ -13,8 +14,8 @@ module.exports.plugins.push(
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
-    }
-  })
+    },
+  }),
 );
 
 // compress the js file
@@ -22,9 +23,9 @@ module.exports.plugins.push(
   new webpack.optimize.UglifyJsPlugin({
     comments: false,
     compressor: {
-      warnings: false
-    }
-  })
+      warnings: false,
+    },
+  }),
 );
 
 // export css to a separate file
@@ -39,5 +40,5 @@ module.exports.module.rules[1] = {
 module.exports.plugins.push(
   new ExtractTextPlugin({
     filename: '../css/main.css',
-  })
+  }),
 );
