@@ -2,15 +2,15 @@
 export default class ApiUsers {
   // get a list of users
   static getList() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         // build some dummy users list
-        let users = [];
-        for (let x = 1; x <= 28; x++) {
+        const users = [];
+        for (let x = 1; x <= 28; x += 1) {
           users.push({
             id: x,
-            username: 'Johny ' + x,
-            job: 'Employee ' + x,
+            username: `Johny ${x}`,
+            job: `Employee ${x}`,
           });
         }
         resolve(users);
@@ -20,7 +20,7 @@ export default class ApiUsers {
 
   // add/edit a user
   static addEdit() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         // do something here
         resolve();
@@ -30,7 +30,7 @@ export default class ApiUsers {
 
   // delete a user
   static delete() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         // do something here
         resolve();

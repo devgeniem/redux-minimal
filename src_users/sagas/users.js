@@ -1,5 +1,5 @@
-import { call, put } from "redux-saga/effects";
-import ApiUsers from "../api/users";
+import { call, put } from 'redux-saga/effects';
+import ApiUsers from '../api/users';
 
 // fetch the user's list
 export function* usersFetchList(action) {
@@ -9,7 +9,7 @@ export function* usersFetchList(action) {
   // save the users in state
   yield put({
     type: 'USERS_LIST_SAVE',
-    users: users,
+    users,
   });
 }
 
@@ -17,7 +17,7 @@ export function* usersFetchList(action) {
 export function* usersAddEdit(action) {
   // call the api to add/edit the user
   yield call(ApiUsers.addEdit);
-  //return action.callbackError("Some error");   // show an error when the API fails
+  // return action.callbackError("Some error");   // show an error when the API fails
 
   // update the state by adding/editing the user
   yield put({

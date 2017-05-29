@@ -12,17 +12,17 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:1337',
     'webpack/hot/only-dev-server',
     'babel-polyfill',
-    path.join(__dirname, appRoot, '/index.js'),
+    path.join(__dirname, appRoot, 'index.jsx'),
   ],
   output: {
-    path: path.join(__dirname, '/public/js'),
+    path: path.join(__dirname, 'public/js'),
     publicPath: 'js/',
     filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: [/\.js$/, /\.jsx$/],
         use: ['react-hot-loader', 'babel-loader'],
         exclude: /node_modules/,
       },
@@ -44,7 +44,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
   devServer: {
-    contentBase: path.join(__dirname, '/public'),
+    contentBase: path.join(__dirname, 'public'),
   },
   plugins: [
     new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {

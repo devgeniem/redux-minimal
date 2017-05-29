@@ -8,5 +8,9 @@ module.exports = {
     "env": {
         "browser": true,
         "mocha": true,
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "strict": 0
     }
 };
