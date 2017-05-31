@@ -1,13 +1,13 @@
-import React from "react";
-import { shallow } from "enzyme";
-import assert from "assert";
-import NotFound from "./NotFound";
+import React from 'react';
+import { shallow } from 'enzyme';
+import assert from 'assert';
+import NotFound from './NotFound';
 
 // unit tests for the NotFound component
 describe('NotFound component', () => {
   describe('render()', () => {
     it('should render the component', () => {
-      const wrapper = shallow(<NotFound/>);
+      const wrapper = shallow(<NotFound />);
       assert.equal(wrapper.length, 1);
     });
   });

@@ -1,6 +1,6 @@
 import i18n from 'i18next';
-import fi from './locales/fi_FI';
-import en from './locales/en_US';
+import fi from './locales/fi_FI.json';
+import en from './locales/en_US.json';
 
 function getI18n(lang) {
   i18n.init({

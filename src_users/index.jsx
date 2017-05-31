@@ -2,9 +2,9 @@ import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { router } from "./router";
-import { store } from "./store";
 import { I18nextProvider } from 'react-i18next';
+import { store } from './store';
+import { router } from './router';
 import getI18n from './i18n';
 
 ReactDOM.render(
