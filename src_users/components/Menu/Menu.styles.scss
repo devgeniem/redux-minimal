@@ -1,5 +1,17 @@
 @import '~commonStyles';
-.header-nav {
+div.menu {
+
   background-color: $headerBg;
   margin-bottom: 12px;
+  padding: 6px;
+  display: flex;
+
+
+  .language-switcher {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: row;
+    margin-left: auto;
+  }
+
 }

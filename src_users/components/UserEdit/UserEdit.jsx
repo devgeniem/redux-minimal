@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Field, SubmissionError, reduxForm } from 'redux-form';
-import { PageHeader, Form } from 'react-bootstrap';
+import { Col, PageHeader, Form } from 'react-bootstrap';
 import { FormField, FormSubmit } from '../../components/';
 import { usersAddEdit } from '../../actions/users'
 
@@ -44,23 +44,25 @@ export class UserEdit extends React.Component {
     return (
       <div className="page-user-edit">
         <PageHeader>{`User ${user.id ? 'edit' : 'add'}`}</PageHeader>
-        <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="username" label="Username" doValidate />
-          <Field component={FormField} name="job" label="Job" />
-          <FormSubmit
-            error={error}
-            invalid={invalid}
-            submitting={submitting}
-            buttonSaveLoading="Saving..."
-            buttonSave="Save User"
-          />
-        </Form>
+        <Col xs={12}>
+          <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
+            <Field component={FormField} name="username" label="Username" doValidate />
+            <Field component={FormField} name="job" label="Job" />
+            <FormSubmit
+              error={error}
+              invalid={invalid}
+              submitting={submitting}
+              buttonSaveLoading="Saving..."
+              buttonSave="Save User"
+            />
+          </Form>
+        </Col>
       </div>
     );
   }
 }
 
-UserEdit.propTypes = {
+UserEdit.PropTypes = {
   dispatch: PropTypes.func.isRequired,
   user: PropTypes.shape({}).isRequired,
   handleSubmit: PropTypes.func.isRequired,

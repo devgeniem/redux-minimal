@@ -10,20 +10,22 @@ export default class Menu extends React.Component { //eslint-disable-line
   render() {
     const { t } = this.props;
     return (
-      <Nav bsStyle="pills" className="header-nav" style={{ position: 'relative' }}>
-        <IndexLinkContainer to="/">
-          <NavItem>
-            {t('home')}
-          </NavItem>
-        </IndexLinkContainer>
-        <LinkContainer to="/user-edit">
-          <NavItem>
-            {t('add_user')} <Glyphicon glyph="plus-sign" />
-          </NavItem>
-        </LinkContainer>
+      <div className="menu">
+        <Nav bsStyle="pills" className="header-nav" style={{ position: 'relative' }}>
+          <IndexLinkContainer to="/">
+            <NavItem>
+              {t('home')}
+            </NavItem>
+          </IndexLinkContainer>
+          <LinkContainer to="/user-edit">
+            <NavItem>
+              {t('add_user')} <Glyphicon glyph="plus-sign" />
+            </NavItem>
+          </LinkContainer>
+        </Nav>
         <LanguageSwitcher changeLanguage={this.props.changeLanguage} />
-      </Nav>
-    );
+      </div>
+  );
   }
 }
 
@@ -36,14 +38,11 @@ Menu.defaultProps = {
   t: undefined,
 };
 
+
 const LanguageSwitcher = props => (
-  <div style={{ position: 'absolute', right: '10px', marginTop: '3px' }}>
-    <Button style={{ border: 'none' }} onClick={() => props.changeLanguage('fi')}>
-      FI
-          </Button>
-    <Button style={{ marginLeft: '20px', border: 'none' }} onClick={() => props.changeLanguage('en')}>
-      EN
-          </Button>
+  <div className="language-switcher">
+    <Button bsStyle="link" onClick={() => props.changeLanguage('fi')}>FI</Button>
+    <Button bsStyle="link" onClick={() => props.changeLanguage('en')}>EN</Button>
   </div>
 );
 

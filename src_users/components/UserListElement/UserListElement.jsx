@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Button, Glyphicon } from 'react-bootstrap';
 import { translate } from 'react-i18next';
@@ -36,5 +37,5 @@ UserListElement.propTypes = {
 };
 
 UserListElement.defaultProps = {
-  t: undefined,
+  t: null,
 };

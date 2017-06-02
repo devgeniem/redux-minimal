@@ -23,7 +23,7 @@ export default class FormSubmit extends React.Component {
 }
 
 // prop checks
-FormSubmit.propTypes = {
+FormSubmit.PropTypes = {
   error: PropTypes.string,  // redux-form general `_error` message
   invalid: PropTypes.bool,  // redux-form invalid prop
   submitting: PropTypes.bool.isRequired,   // redux-form invalid submitting

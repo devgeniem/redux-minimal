@@ -43,13 +43,7 @@ class App extends React.Component {
         <div className="main">
           {children}
         </div>
-        <div className="footer">
-          <img alt="logo" src="/media/logo.svg" />
-          <span>
-            Simple users app built with {' '}
-            <a href="http://redux-minimal.js.org/" rel="noopener noreferrer" target="_blank">redux-minimal</a>
-          </span>
-        </div>
+        <div className="footer"></div>
       </div>
     );
   }
