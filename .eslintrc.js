@@ -11,6 +11,9 @@ module.exports = {
     },
     "parser": "babel-eslint",
     "rules": {
-        "strict": 0
+        "strict": 0,
+        "no-underscore-dangle": 0,
+        "space-in-parens": 0,
+
     }
 };
