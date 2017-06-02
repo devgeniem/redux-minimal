@@ -128,7 +128,7 @@ UserList.propTypes = {
 };
 
 UserList.defaultProps = {
-  t: undefined,
+  t: null,
 };
 
 // export the connected class

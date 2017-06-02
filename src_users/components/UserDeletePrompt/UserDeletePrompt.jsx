@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 export default class UserDeletePrompt extends React.Component {
   render() {
@@ -20,7 +21,7 @@ export default class UserDeletePrompt extends React.Component {
   }
 }
 
-UserDeletePrompt.propTypes = {
+UserDeletePrompt.PropTypes = {
   show: PropTypes.bool.isRequired,
   user: PropTypes.PropTypes.shape({}).isRequired,
   hideDelete: PropTypes.func.isRequired,

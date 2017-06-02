@@ -56,7 +56,7 @@ export class UserEdit extends React.Component {
   }
 }
 
-UserEdit.propTypes = {
+UserEdit.PropTypes = {
   dispatch: PropTypes.func.isRequired,
   user: PropTypes.shape({}).isRequired,
   handleSubmit: PropTypes.func.isRequired,
