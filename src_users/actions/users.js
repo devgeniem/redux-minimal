@@ -8,6 +8,10 @@ export const USERS_ADD_EDIT    = 'USERS_ADD_EDIT';
 export const USERS_DELETE      = 'USERS_DELETE';
 export const USERS_FETCH_LIST  = 'USERS_FETCH_LIST';
 
+/**
+ * this does something
+ * @param {user} asdasd
+ */
 export function addUserSave(user) {
   return {
     type: USERS_ADD_SAVE,

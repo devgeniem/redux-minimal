@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { Field, SubmissionError, reduxForm } from 'redux-form';
-import { Col, PageHeader, Form } from 'react-bootstrap';
-import { FormField, FormSubmit } from '../../components/';
-import { usersAddEdit } from '../../actions/users'
+import { Col, PageHeader, Row } from 'react-bootstrap';
+// import { FormField, FormSubmit } from '../../components/';
+import UserActions from '../../actions/users';
 
 export class UserEdit extends React.Component {
   constructor(props) {
@@ -39,23 +38,17 @@ export class UserEdit extends React.Component {
   }
 
   render() {
-    const { user, handleSubmit, error, invalid, submitting } = this.props;
-
+    const { user } = this.props;
     return (
       <div className="page-user-edit">
         <PageHeader>{`User ${user.id ? 'edit' : 'add'}`}</PageHeader>
         <Col xs={12}>
-          <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-            <Field component={FormField} name="username" label="Username" doValidate />
-            <Field component={FormField} name="job" label="Job" />
-            <FormSubmit
-              error={error}
-              invalid={invalid}
-              submitting={submitting}
-              buttonSaveLoading="Saving..."
-              buttonSave="Save User"
-            />
-          </Form>
+          <Row>
+            <input placeholder="username" type="text" />
+          </Row>
+          <Row>
+            <input placeholder="job" type="text" />
+          </Row>
         </Col>
       </div>
     );
@@ -77,18 +70,6 @@ UserEdit.defaultProps = {
   submitting: false,
 };
 
-// decorate the form component
-const UserEditForm = reduxForm({
-  form: 'user_edit',
-  validate: (values) => {
-    const errors = {};
-    if (!values.username) {
-      errors.username = 'Username is required';
-    }
-    return errors;
-  },
-})(UserEdit);
-
 // export the connected class
 function mapStateToProps(state, ownProps) {
   const user = state.users.find(x => Number(x.id) === Number(ownProps.params.id)) || {};
@@ -97,4 +78,4 @@ function mapStateToProps(state, ownProps) {
     initialValues: user,
   };
 }
-export default connect(mapStateToProps)(UserEditForm);
+export default connect(mapStateToProps)(UserEdit);
