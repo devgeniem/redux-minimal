@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects';
+import { USERS_ADD_SAVE, USERS_DELETE_SAVE, USERS_EDIT_SAVE, USERS_LIST_SAVE } from '../actions/users';
 import ApiUsers from '../api/users';
 
 // fetch the user's list
@@ -8,7 +9,7 @@ export function* usersFetchList(action) {
 
   // save the users in state
   yield put({
-    type: 'USERS_LIST_SAVE',
+    type: USERS_LIST_SAVE,
     users,
   });
 }
@@ -21,7 +22,7 @@ export function* usersAddEdit(action) {
 
   // update the state by adding/editing the user
   yield put({
-    type: action.user.id ? 'USERS_EDIT_SAVE' : 'USERS_ADD_SAVE',
+    type: action.user.id ? USERS_EDIT_SAVE : USERS_ADD_SAVE,
     user: action.user,
   });
 
@@ -36,7 +37,7 @@ export function* usersDelete(action) {
 
   // update the state by removing the user
   yield put({
-    type: 'USERS_DELETE_SAVE',
+    type: USERS_DELETE_SAVE,
     user_id: action.user_id,
   });
 }

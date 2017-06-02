@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import { Table, Pagination } from 'react-bootstrap';
 import { translate } from 'react-i18next';
 import { UserListElement, UserDeletePrompt } from '../../components';
+import { usersDelete } from '../../actions/users';
 
 @translate(['list_header'])
 class UserList extends React.Component {
@@ -49,10 +50,7 @@ class UserList extends React.Component {
   // delete the user
   userDelete() {
     // delete the user
-    this.props.dispatch({
-      type: 'USERS_DELETE',
-      user_id: this.state.delete_user.id,
-    });
+    this.props.dispatch(usersDelete(this.state.delete_user.id));
 
     // hide the prompt
     this.hideDelete();

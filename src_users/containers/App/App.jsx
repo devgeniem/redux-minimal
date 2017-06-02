@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 import { Menu } from '../../components/';
+import { setLanguage } from '../../actions/lang';
+import { usersFetchList } from '../../actions/users';
 import '../../stylesheets/main.scss';
 
 class App extends React.Component {
@@ -16,11 +18,11 @@ class App extends React.Component {
 
   componentWillMount() {
     // the first time we load the app, we need that users list
-    this.props.dispatch({ type: 'USERS_FETCH_LIST' });
+    this.props.dispatch(usersFetchList());
   }
 
   changeLanguage(lang) {
-    this.props.dispatch({ type: 'SET_LANGUAGE', lang });
+    this.props.dispatch(setLanguage(lang));
     i18next.changeLanguage(lang);
   }
 

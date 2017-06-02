@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import { Field, SubmissionError, reduxForm } from 'redux-form';
 import { PageHeader, Form } from 'react-bootstrap';
 import { FormField, FormSubmit } from '../../components/';
+import { usersAddEdit } from '../../actions/users'
 
 export class UserEdit extends React.Component {
   constructor(props) {
@@ -15,6 +16,9 @@ export class UserEdit extends React.Component {
 
   formSubmit(values) {
     const { dispatch } = this.props;
+
+    const user = { id: values.id || 0, username: values.username, job: values.job };
+
     return new Promise((resolve, reject) => {
       dispatch({
         type: 'USERS_ADD_EDIT',
