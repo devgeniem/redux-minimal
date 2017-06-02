@@ -1,11 +1,16 @@
 import React from "react";
 
+import {Header, Footer, Layout } from 'antd';
+
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="page-home">
+      <Layout className="page-home">
+        <Footer>
+          penis
+        </Footer>
         <h4>Hello world!</h4>
-      </div>
+      </Layout>
     );
   }
 }

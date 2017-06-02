@@ -1,6 +1,6 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-const appRoot = 'src_users'; // the app root folder: src, src_users, etc
+const appRoot = 'src'; // the app root folder: src, src_users, etc
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
