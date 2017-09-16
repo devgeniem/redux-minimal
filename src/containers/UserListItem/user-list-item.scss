@@ -1,0 +1,9 @@
+.user-list-item {
+  display:flex;
+  border-bottom:1px solid #ddd;
+  align-items: center;
+  padding: 15px 0;
+  a {
+    flex:1;
+  }
+}
