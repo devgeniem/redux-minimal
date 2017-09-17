@@ -2,9 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Form, Field, reduxForm} from 'redux-form';
-import {Button} from 'react-bootstrap';
+import {Button, Row, Col} from 'react-bootstrap';
 
 import * as UserAPI from '../../api/userApi';
+
+import {ImgUploader} from '../../components/ImgUploader/ImgUploader';
 
 class UserPage extends React.Component {
 
@@ -29,9 +31,15 @@ class UserPage extends React.Component {
       <div className="users-list">
         <h1>{heading}</h1>
         <Form onSubmit={handleSubmit(this.handleSaveClick)}>
-          <label className="form-label" htmlFor="name">Name</label>
-          <Field className="form-control" name="name" placeholder="Name" component="input" required/>
-
+          <Row>
+            <Col sm={6}>
+              <ImgUploader/>
+            </Col>
+            <Col sm={6}>
+              <label className="form-label" htmlFor="name">Name</label>
+              <Field className="form-control" name="name" placeholder="Name" component="input" required/>
+            </Col>
+          </Row>
           <br />
           <Button disabled={this.props.invalid} type="submit">Save</Button>
         </Form>
@@ -58,7 +66,7 @@ const mapStateToProps = (state, ownProps) => {
     user,
     initialValues: user,
   };
-}
+};
 
 // decorate the form component
 const UserForm = reduxForm({

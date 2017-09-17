@@ -1,0 +1,15 @@
+.img-uploader {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+
+  .preview-img {
+    cursor:pointer;
+    &:hover {
+      opacity:0.9;
+    }
+  }
+  input[type=file] {
+    display:none;
+  }
+}

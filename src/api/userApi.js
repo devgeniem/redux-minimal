@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import * as userActions from '../actions/users';
 
 const API = 'http://localhost:8080/user/';
+const uploadAPI = 'http://localhost:8080/upload/';
 
 export const updateUser = (user) => {
   return (dispatch) => {
@@ -48,6 +49,18 @@ export const fetchUsers = () => {
     return Axios.get(API)
       .then((response) => {
         dispatch(userActions.fetchUsersSuccess(response.data));
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+  };
+}
+
+export const uploadAvatar = (file) => {
+  return (dispatch) => {
+    return Axios.get(uploadAPI, file)
+      .then((response) => {
+        dispatch(userActions.avatarUploadSuccess(response.data));
       })
       .catch((error) => {
         throw new Error(error);
