@@ -13,7 +13,7 @@ const middlewareArr = [];
 // add the router middleware
 middlewareArr.push(routerMiddleware(browserHistory));
 middlewareArr.push(thunk);
-middlewareArr.push(logger);
+
 
 
 // add the freeze dev middleware

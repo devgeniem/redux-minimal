@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Button, ControlLabel} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
+import {Link} from 'react-router';
 
 import './login.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -30,6 +31,9 @@ class Login extends React.Component {
         <Field className="form-control" component="input" type="password" name="password"/>
         <br />
         <Button onClick={this.handleLoginClick}>Login</Button>
+
+        <br /><br />
+        <Link to={'/register'}>Register</Link>
       </div>
     );
   }
@@ -43,7 +47,7 @@ Login.propTypes = {
 Login.propTypes = {};
 // decorate the form component
 const LoginForm = reduxForm({
-  form: 'user_edit',
+  form: 'login',
   validate: (values) => {
     const errors = {};
     if (!values.name) errors.name = 'Name is required';

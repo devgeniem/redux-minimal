@@ -7,23 +7,9 @@ const uploadAPI = 'http://localhost:8080/upload/';
 
 export const updateUser = (user) => {
   return (dispatch) => {
-    return Axios.put(API, user)
-      .then((response) => {
-        dispatch(userActions.updateUserSuccess(response.data));
-        browserHistory.push('/');
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
-  }
-};
-
-
-export const createUser = (user) => {
-  return (dispatch) => {
     return Axios.post(API, user)
       .then((response) => {
-        dispatch(userActions.createUserSuccess(response.data));
+        dispatch(userActions.updateUserSuccess(response.data));
         browserHistory.push('/');
       })
       .catch((error) => {
@@ -41,7 +27,7 @@ export const deleteUser = (userId) => {
       .catch((error) => {
         throw new Error(error);
       });
-  }
+  };
 };
 
 export const fetchUsers = () => {

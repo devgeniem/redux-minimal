@@ -23,7 +23,8 @@ class UserListItem extends React.Component {
     return (
       <div className="user-list-item">
         <Link to={`user/${user.id}`}>
-          {user.name}
+          {user.email}
+          {user.name ?  ` (${this.props.user.name})` : null}
         </Link>
         <button onClick={this.handleDeleteClick}>Delete</button>
       </div>

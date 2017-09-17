@@ -6,6 +6,7 @@ import Home from './containers/Home/Home';
 import NotFound from './components/NotFound';
 import UserPage from './containers/UserPage/UserPage';
 import Login from './containers/Login/Login';
+import Register from './containers/Register/Register';
 
 const checkAuth = (nextState, replace) => {
   const state = store.getState();
@@ -27,6 +28,8 @@ const router = (
       <IndexRoute component={Home} onEnter={checkAuth}/>
       <Route path="user(/:id)" component={UserPage} onEnter={checkAuth}/>
       <Route path="login" component={Login}/>
+      <Route path="register" component={Register}/>
+
       <Route path="*" component={NotFound}/>
     </Route>
   </Router>

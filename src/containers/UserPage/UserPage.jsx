@@ -12,15 +12,21 @@ class UserPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleAvatarSave = this.handleAvatarSave.bind(this);
+
   }
 
-  handleSaveClick(user) {
+  handleFormSubmit(user) {
     if (this.props.params.id) {
       this.props.dispatch(UserAPI.updateUser(user));
     } else {
-      this.props.dispatch(UserAPI.createUser(user));
+      //this.props.dispatch(UserAPI.createUser(user));
     }
+  }
+
+  handleAvatarSave(file) {
+    this.props.dispatch(UserAPI.uploadAvatar(file));
   }
 
   render() {
@@ -30,10 +36,10 @@ class UserPage extends React.Component {
     return (
       <div className="users-list">
         <h1>{heading}</h1>
-        <Form onSubmit={handleSubmit(this.handleSaveClick)}>
+        <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <Row>
             <Col sm={6}>
-              <ImgUploader/>
+              <ImgUploader handleSave={this.handleAvatarSave}/>
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>

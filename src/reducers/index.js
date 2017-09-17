@@ -19,5 +19,5 @@ export const reducers = combineReducers({
   }),
   routing: routerReducer,
   users: usersReducer,
-  authentication: authenticationReducer
+  authentication: authenticationReducer,
 });

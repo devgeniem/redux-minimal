@@ -2,14 +2,21 @@
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 5px;
-
+  display: flex;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  button{
+    width:100%;
+  }
   .preview-img {
-    cursor:pointer;
+    cursor: pointer;
     &:hover {
-      opacity:0.9;
+      opacity: 0.9;
     }
   }
   input[type=file] {
-    display:none;
+    display: none;
   }
 }
