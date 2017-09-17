@@ -3,15 +3,12 @@ import {
   LOGOUT_SUCCESS,
 } from '../actions/authentication';
 
-
-const initialState = { users: [] };
-
-export default function users(state = initialState, action) {
+export default function authentication(state = {}, action) {
   switch (action.type) {
     case LOGOUT_SUCCESS:
       return state;
     case LOGIN_SUCCESS:
-      return state;
+      return { ...state, user: action.user };
     default:
       return state;
   }

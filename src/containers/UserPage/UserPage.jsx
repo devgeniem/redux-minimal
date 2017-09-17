@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Form, Field, reduxForm} from 'redux-form';
-import {Button, Row} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 import * as UserAPI from '../../api/userApi';
 
@@ -22,13 +22,17 @@ class UserPage extends React.Component {
   }
 
   render() {
-    let { handleSubmit } = this.props;
+    const { handleSubmit } = this.props;
+    const heading = this.props.params.id ? `Editing ${this.props.user.name}` : 'Create a new user';
 
     return (
       <div className="users-list">
-        <h1>User</h1>
+        <h1>{heading}</h1>
         <Form onSubmit={handleSubmit(this.handleSaveClick)}>
+          <label className="form-label" htmlFor="name">Name</label>
           <Field className="form-control" name="name" placeholder="Name" component="input" required/>
+
+          <br />
           <Button disabled={this.props.invalid} type="submit">Save</Button>
         </Form>
       </div>
@@ -43,7 +47,7 @@ UserPage.propTypes = {
 
 UserPage.defaultProps = {
   invalid: false,
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
   let user = {};
@@ -61,12 +65,9 @@ const UserForm = reduxForm({
   form: 'user_edit',
   validate: (values) => {
     const errors = {};
-    if (!values.name) {
-      errors.name = 'Name is required';
-    }
+    if (!values.name) errors.name = 'Name is required';
     return errors;
   },
 })(UserPage);
-
 
 export default connect(mapStateToProps)(UserForm);
