@@ -1,6 +1,7 @@
 import React from 'react';
-import UserList from '../../components/UserList/UserList';
 import {connect} from 'react-redux';
+
+import UserList from '../../components/UserList/UserList';
 
 class Home extends React.Component {
   render() {

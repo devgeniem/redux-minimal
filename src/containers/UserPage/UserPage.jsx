@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Form, Field, reduxForm} from 'redux-form';
-import {Button,Row} from 'react-bootstrap';
+import {Button, Row} from 'react-bootstrap';
 
-import * as userActions  from '../../actions/users';
+import * as UserAPI from '../../api/userApi';
 
 class UserPage extends React.Component {
 
@@ -14,17 +14,16 @@ class UserPage extends React.Component {
   }
 
   handleSaveClick(user) {
-
     if (this.props.params.id) {
-      this.props.dispatch(userActions.updateUser(user));
+      this.props.dispatch(UserAPI.updateUser(user));
     } else {
-      this.props.dispatch(userActions.createUser(user));
+      this.props.dispatch(UserAPI.createUser(user));
     }
   }
 
   render() {
-    let {handleSubmit } = this.props;
-    console.log(this.props)
+    let { handleSubmit } = this.props;
+
     return (
       <div className="users-list">
         <h1>User</h1>
@@ -38,9 +37,13 @@ class UserPage extends React.Component {
 }
 
 UserPage.propTypes = {
+  invalid: PropTypes.bool,
   dispatch: PropTypes.func.isRequired,
 };
 
+UserPage.defaultProps = {
+  invalid: false,
+}
 
 const mapStateToProps = (state, ownProps) => {
   let user = {};

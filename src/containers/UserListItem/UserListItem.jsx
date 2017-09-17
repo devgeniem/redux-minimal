@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './user-list-item.scss';
-import * as userActions from '../../actions/users';
+import * as UserAPI from '../../api/userApi';
 
 
 class UserListItem extends React.Component {
@@ -14,8 +14,7 @@ class UserListItem extends React.Component {
   }
 
   handleDeleteClick() {
-    this.props.dispatch(userActions.deleteUser(this.props.user.id));
-
+    this.props.dispatch(UserAPI.deleteUser(this.props.user.id));
   }
 
   render() {

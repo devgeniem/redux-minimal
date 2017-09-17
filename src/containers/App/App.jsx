@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import * as userActions from '../../actions/users';
+import * as UserAPI from '../../api/userApi';
 import './app.scss';
 import '../../stylesheets/main.scss';
 
@@ -13,7 +13,7 @@ class App extends React.Component { //eslint-disable-line
   }
 
   componentDidMount() {
-    this.props.dispatch(userActions.fetchUsers());
+    this.props.dispatch(UserAPI.fetchUsers());
   }
 
   render() {
