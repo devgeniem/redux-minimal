@@ -27,14 +27,11 @@ class Register extends React.Component {
       <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 
         <div className="login-container">
-          <ControlLabel htmlFor="name">Name</ControlLabel>
-          <Field className="form-control" component="input" name="name"/>
-          <br />
           <ControlLabel htmlFor="email">Email</ControlLabel>
-          <Field className="form-control" component="input" name="email"/>
+          <Field className="form-control" component="input" name="email" required/>
           <br />
           <ControlLabel htmlFor="password">Password</ControlLabel>
-          <Field className="form-control" component="input" type="password" name="password"/>
+          <Field className="form-control" component="input" type="password" name="password" required/>
           <br />
           <Button disabled={this.props.invalid} type="submit">Register</Button>
         </div>
@@ -58,7 +55,9 @@ const RegisterForm = reduxForm({
   form: 'register',
   validate: (values) => {
     const errors = {};
-    if (!values.name) errors.name = 'Name is required';
+    if (!values.email) errors.email = 'Email is required';
+    if (!values.password) errors.password = 'Password is required';
+
     return errors;
   },
 })(Register);

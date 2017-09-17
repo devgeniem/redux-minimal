@@ -37,6 +37,7 @@ UserListItem.propTypes = {
   dispatch: PropTypes.func.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
+    name: PropTypes.string,
   }).isRequired,
 
 };
