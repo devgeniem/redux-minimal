@@ -54,15 +54,17 @@ class App extends React.Component { //eslint-disable-line
 App.propTypes = {
   children: PropTypes.node.isRequired,
   dispatch: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool,
 };
 
 App.defaultProps = {
   users: [],
+  authenticated: false,
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    authenticated: state.authentication.user && state.authentication.user.loggedIn
-  }
+    authenticated: state.authentication.user && state.authentication.user.loggedIn,
+  };
 };
 export default connect(mapStateToProps)(App);

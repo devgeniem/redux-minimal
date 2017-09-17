@@ -6,7 +6,7 @@ import {
 export default function authentication(state = {}, action) {
   switch (action.type) {
     case LOGOUT_SUCCESS:
-      return state;
+      return { ...state, user: action.user };
     case LOGIN_SUCCESS:
       return { ...state, user: action.user };
     default:

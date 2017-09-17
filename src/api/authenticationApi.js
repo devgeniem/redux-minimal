@@ -22,7 +22,7 @@ export const logout = () => {
     return Axios.post('http://localhost:8080/logout')
       .then((response) => {
         dispatch(authenticationActions.logoutSuccess(response.data));
-        browserHistory.push('/');
+        browserHistory.push('/login');
       })
       .catch((error) => {
         throw new Error(error);
