@@ -5,11 +5,11 @@ export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const AVATAR_UPLOAD_SUCCESS = 'AVATAR_UPLOAD_SUCCESS';
 
 
-export const avatarUploadSuccess = (img) => {
-  console.log('UPLOAD', img)
+export const avatarUploadSuccess = (obj) => {
+
   return {
     type: AVATAR_UPLOAD_SUCCESS,
-    img,
+    obj,
   };
 };
 
@@ -26,8 +26,6 @@ export const fetchUsersSuccess = (users) => {
     users,
   };
 };
-
-
 
 export const updateUserSuccess = (user) => {
   return {

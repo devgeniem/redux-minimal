@@ -12,6 +12,8 @@ const checkAuth = (nextState, replace) => {
   const state = store.getState();
   const authenticated = state.authentication.user && state.authentication.user.loggedIn;
 
+  // TODO: remove
+  return;
   if (!authenticated) {
     replace({
       pathname: '/login',

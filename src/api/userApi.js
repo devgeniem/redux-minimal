@@ -1,13 +1,16 @@
 import Axios from 'axios';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import * as userActions from '../actions/users';
 
-const API = 'http://localhost:8080/user/';
-const uploadAPI = 'http://localhost:8080/upload/';
+const baseURL = 'http://localhost:8080';
+const uploadAPI = `${baseURL}/upload`;
+const API = `${baseURL}/user/`;
+
 
 export const updateUser = (user) => {
   return (dispatch) => {
-    return Axios.post(API, user)
+    console.log('updating', user)
+    return Axios.post(`${API}${user.id}/`, user)
       .then((response) => {
         dispatch(userActions.updateUserSuccess(response.data));
         browserHistory.push('/');
@@ -15,7 +18,7 @@ export const updateUser = (user) => {
       .catch((error) => {
         throw new Error(error);
       });
-  }
+  };
 };
 
 export const deleteUser = (userId) => {
@@ -42,11 +45,29 @@ export const fetchUsers = () => {
   };
 }
 
-export const uploadAvatar = (file) => {
+export const uploadAvatar = (file, user) => {
   return (dispatch) => {
-    return Axios.get(uploadAPI, file)
+
+    if (!file) throw new Error('File is missing');
+    if (!user) throw new Error('User is missing');
+
+    const data = new FormData();
+
+    data.append('file', file);
+    data.append('name', `avatar-${user.id}`);
+
+    return Axios.post(uploadAPI, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=-',
+      },
+    })
       .then((response) => {
-        dispatch(userActions.avatarUploadSuccess(response.data));
+        const avatarUrl = `${baseURL}/${response.data[0].path}/`;
+        const obj = {
+          avatarUrl,
+          user,
+        };
+        dispatch(userActions.avatarUploadSuccess(obj));
       })
       .catch((error) => {
         throw new Error(error);

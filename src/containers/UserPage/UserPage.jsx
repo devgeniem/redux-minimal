@@ -18,20 +18,16 @@ class UserPage extends React.Component {
   }
 
   handleFormSubmit(user) {
-    if (this.props.params.id) {
-      this.props.dispatch(UserAPI.updateUser(user));
-    } else {
-      //this.props.dispatch(UserAPI.createUser(user));
-    }
+    this.props.dispatch(UserAPI.updateUser(user));
   }
 
   handleAvatarSave(file) {
-    this.props.dispatch(UserAPI.uploadAvatar(file));
+    this.props.dispatch(UserAPI.uploadAvatar(file, this.props.user));
   }
 
   render() {
     const { handleSubmit } = this.props;
-    const heading = this.props.params.id ? `Editing ${this.props.user.name}` : 'Create a new user';
+    const heading = `Editing ${this.props.user.email}`;
 
     return (
       <div className="users-list">
@@ -56,11 +52,21 @@ class UserPage extends React.Component {
 
 UserPage.propTypes = {
   invalid: PropTypes.bool,
+  handleSubmit: PropTypes.func,
   dispatch: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    id: PropTypes.number,
+  }),
+  params: PropTypes.shape({
+    id: PropTypes.string,
+  })
 };
 
 UserPage.defaultProps = {
   invalid: false,
+  user: {},
+  params: {},
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -68,6 +74,7 @@ const mapStateToProps = (state, ownProps) => {
   if (state.users && state.users.users) {
     user = state.users.users.find(x => Number(x.id) === Number(ownProps.params.id)) || {};
   }
+  console.log(user);
   return {
     user,
     initialValues: user,
@@ -77,6 +84,7 @@ const mapStateToProps = (state, ownProps) => {
 // decorate the form component
 const UserForm = reduxForm({
   form: 'user_edit',
+  enableReinitialize: true,
   validate: (values) => {
     const errors = {};
     if (!values.name) errors.name = 'Name is required';

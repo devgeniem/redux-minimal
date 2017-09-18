@@ -17,8 +17,10 @@ class App extends React.Component { //eslint-disable-line
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(UserAPI.fetchUsers());
+    this.props.dispatch(AuthenticationAPI.getSession());
+
   }
 
   handleLogoutClick() {
@@ -38,7 +40,6 @@ class App extends React.Component { //eslint-disable-line
           <h1>
             <Link to={'/'}>SB2 Test</Link>
           </h1>
-          <Link to={'/user'}>Create new user</Link>
           {this._renderLogout()}
         </header>
 

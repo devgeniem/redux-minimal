@@ -44,6 +44,7 @@ class Register extends React.Component {
 Register.propTypes = {
   dispatch: PropTypes.func.isRequired,
   invalid: PropTypes.bool,
+  handleSubmit: PropTypes.func,
 };
 
 Register.defaultProps = {

@@ -3,6 +3,7 @@ import {
   CREATE_USER_SUCCESS,
   UPDATE_USER_SUCCESS,
   DELETE_USER_SUCCESS,
+  AVATAR_UPLOAD_SUCCESS
 } from '../actions/users';
 
 
@@ -24,6 +25,16 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         users: [...state.users, action.user],
+      };
+    case AVATAR_UPLOAD_SUCCESS:
+
+      const current = state.users.find(user => Number(user.id) === Number(action.obj.user.id));
+      const updatedUser = Object.assign({}, current);
+      updatedUser.avatarlUrl = action.obj.avatarUrl;
+
+      return {
+        ...state,
+        users: state.users.map((user) => (user.id === updatedUser.id) ? updatedUser : user),
       };
     case FETCH_USERS_SUCCESS:
       return { ...state, users: [...action.users] };

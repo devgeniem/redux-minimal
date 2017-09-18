@@ -1,12 +1,12 @@
 import Axios from 'axios';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import * as authenticationActions from '../actions/authentication';
 import * as userActions from '../actions/users';
 
 
-export const login = () => {
+export const login = (user) => {
   return (dispatch) => {
-    return Axios.post('http://localhost:8080/login')
+    return Axios.post('http://localhost:8080/login', user)
       .then((response) => {
         dispatch(authenticationActions.loginSuccess(response.data));
         browserHistory.push('/');
@@ -43,3 +43,15 @@ export const logout = () => {
       });
   }
 };
+
+export const getSession = () => {
+  return (dispatch) => {
+    return Axios.get('http://localhost:8080/session')
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }
+}
