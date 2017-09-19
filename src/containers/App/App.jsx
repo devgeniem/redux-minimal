@@ -18,9 +18,6 @@ class App extends React.Component { //eslint-disable-line
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
-  componentWillMount() {
-    this.props.dispatch(UserAPI.fetchUsers());
-  }
 
   handleLogoutClick() {
     this.props.dispatch(AuthenticationAPI.logout());
@@ -28,7 +25,7 @@ class App extends React.Component { //eslint-disable-line
 
   renderLogout() {
     const transparent = true;
-    return this.props.authenticated
+    return localStorage.getItem('loggedIn')
       ? <IconButton
         icon="ion-log-out"
         transparent={transparent}
