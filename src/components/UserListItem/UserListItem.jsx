@@ -1,19 +1,36 @@
 import React from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
+import {IconButton} from '../IconButton/IconButton';
 import './user-list-item.scss';
 
 export class UserListItem extends React.Component {
 
+  renderProfilePic() {
+    const {url, email} = this.props.user;
+    if (url) {
+      return (
+        <div className="profile-pic">
+          <img src={`http://${url}`}
+               alt={email}
+          />
+        </div>
+      );
+    } else {
+      return <div className="profile-pic placeholder"/>;
+    }
+  }
+
   render() {
-    const user = this.props.user;
+    const {name, id, email} = this.props.user;
+
     return (
       <div className="user-list-item">
-        <Link to={`user/${user.id}`}>
-          {user.email}
-          {user.name ? ` (${this.props.user.name})` : null}
+        <Link to={`user/${id}`}>
+          {this.renderProfilePic()}
+          {email} {name ? ` (${name})` : null}
         </Link>
-        <button onClick={this.props.onDeleteClick}>Delete</button>
+        <IconButton onClick={this.props.onDeleteClick} icon="ion-ios-trash"/>
       </div>
     );
   }
@@ -23,6 +40,8 @@ UserListItem.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
+    url: PropTypes.string,
+    email: PropTypes.string,
   }).isRequired,
   onDeleteClick: PropTypes.func,
 };

@@ -9,6 +9,7 @@ import * as AuthenticationAPI from '../../api/authenticationApi';
 
 import './app.scss';
 import '../../stylesheets/main.scss';
+import '../../stylesheets/ionicons.min.css';
 
 class App extends React.Component { //eslint-disable-line
 

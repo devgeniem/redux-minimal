@@ -13,6 +13,7 @@ class UserList extends React.Component {
     this.props.dispatch(UserAPI.deleteUser(userId));
   }
 
+
   render() {
     const users = this.props.users || [];
 

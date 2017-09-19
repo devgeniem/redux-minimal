@@ -8,11 +8,13 @@ const API = `${baseURL}/user/`;
 
 export const updateUser = (user) => {
   return (dispatch) => {
-
+    const {name, profilePic, id} = user;
     const formData = new FormData();
-    formData.append('name', user.name);
-    formData.append('url', user.profilePic);
-    return Axios.post(`${API}${user.id}/`, formData, {
+
+    if (name) formData.append('name', name);
+    if (profilePic) formData.append('url', profilePic);
+
+    return Axios.post(`${API}${id}/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data; boundary=-',
       },

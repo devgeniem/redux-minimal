@@ -1,9 +1,31 @@
 .user-list-item {
-  display:flex;
-  border-bottom:1px solid #ddd;
+  display: flex;
   align-items: center;
-  padding: 15px 0;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 3px 2px 15px rgba(0, 0, 0, 0.03);
+
   a {
-    flex:1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .profile-pic {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-right: 15px;
+
+    &.placeholder {
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+
+    img {
+      height: 100%;
+    }
+
   }
 }

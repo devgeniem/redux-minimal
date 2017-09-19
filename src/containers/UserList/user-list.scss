@@ -1,8 +1,26 @@
 .user-list {
+  display: flex;
   ul {
-    list-style-type:none;
+    width: 100%;
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
     li {
+      flex: 1 0 50%;
+      max-width: 48%;
+      margin: 15px 1% 0px;
+    }
+  }
+}
 
+@media (max-width: 600px) {
+  .user-list {
+    ul {
+
+      li {
+        flex: 1;
+        max-width: 98%;
+      }
     }
   }
 }
