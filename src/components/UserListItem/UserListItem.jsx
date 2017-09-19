@@ -29,7 +29,10 @@ export class UserListItem extends React.Component {
       <div className="user-list-item">
         <Link to={`user/${id}`}>
           {this.renderProfilePic()}
-          {email} {name ? ` (${name})` : null}
+          <div className="name">
+            <h2>{email}</h2>
+            <h5>{name}</h5>
+          </div>
         </Link>
         <IconButton onClick={this.props.onDeleteClick} icon="ion-ios-trash"/>
       </div>

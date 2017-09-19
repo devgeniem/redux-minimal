@@ -15,7 +15,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  users: PropTypes.array
+  users: PropTypes.array,
 };
 
 Home.defaultProps = {

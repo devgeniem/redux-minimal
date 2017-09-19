@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Form, Field, reduxForm} from 'redux-form';
-import {Button, Row, Col} from 'react-bootstrap';
-
+import {Row, Col} from 'react-bootstrap';
+import {IconButton} from '../../components/IconButton/IconButton';
 import * as UserAPI from '../../api/userApi';
 
 import {ImgUploader} from '../../components/ImgUploader/ImgUploader';
@@ -20,27 +20,42 @@ class UserPage extends React.Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
-    const heading = `Editing ${this.props.user.email}`;
+    const {handleSubmit, invalid, user} = this.props;
+    const heading = `Editing ${user.email}`;
 
     return (
       <div className="users-list">
         <h1>{heading}</h1>
-        <Form onSubmit={handleSubmit(this.handleFormSubmit)}
-              encType="multipart/form-data">
+        <Form
+          onSubmit={handleSubmit(this.handleFormSubmit)}
+          encType="multipart/form-data">
           <Row>
             <Col sm={6}>
-              <Field name="profilePic" image={this.props.user.url}
-                     component={ImgUploader} type="file"/>
+              <Field
+                name="profilePic"
+                image={user.url}
+                component={ImgUploader}
+                type="file"/>
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>
-              <Field className="form-control" name="name" placeholder="Name"
-                     component="input" required/>
+
+              <Field
+                className="form-control"
+                name="name"
+                placeholder="Name"
+                component="input"
+                required/>
+              <br />
+
+              <IconButton
+                icon="ion-checkmark"
+                disabled={invalid}
+                type="submit"
+                label="Save"/>
             </Col>
           </Row>
-          <br />
-          <Button disabled={this.props.invalid} type="submit">Save</Button>
+
         </Form>
       </div>
     );

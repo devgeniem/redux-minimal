@@ -13,12 +13,12 @@ const checkAuth = (nextState, replace) => {
   const authenticated = state.authentication.user &&
     state.authentication.user.loggedIn;
 
-  if (!authenticated) {
-    replace({
-      pathname: '/login',
-      state: {nextPathname: nextState.location.pathname},
-    });
-  }
+  // if (!authenticated) {
+  //   replace({
+  //     pathname: '/login',
+  //     state: {nextPathname: nextState.location.pathname},
+  //   });
+  // }
 };
 
 // build the router

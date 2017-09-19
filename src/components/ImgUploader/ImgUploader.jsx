@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Button} from 'react-bootstrap';
 import './img-uploader.scss';
+import {IconButton} from '../../components/IconButton/IconButton';
 
 export class ImgUploader extends React.Component {
 
@@ -25,6 +26,7 @@ export class ImgUploader extends React.Component {
   _renderPreview() {
     let elem = null;
     // FIXME: server should provide the protocol (http://)
+
     const url = this.state.preview
       ? this.state.preview
       : `http://${this.props.image}?${new Date().getTime()}`;
@@ -35,13 +37,20 @@ export class ImgUploader extends React.Component {
           <img
             className="img-responsive preview-img"
             src={url}
-            alt=""/>
-          <Button onClick={this.handleStartImgUpload}>Change picture</Button>
+            alt=""
+          />
+          <IconButton
+            onClick={this.handleStartImgUpload}
+            icon="ion-aperture"
+            label="Change picture"
+          />
         </div>
       );
     } else {
-      elem =
-        <Button onClick={this.handleStartImgUpload}>Upload picture</Button>;
+      elem = (<IconButton
+        onClick={this.handleStartImgUpload}
+        icon="ion-aperture"
+        label="Upload picture"/>);
     }
     return elem;
   }

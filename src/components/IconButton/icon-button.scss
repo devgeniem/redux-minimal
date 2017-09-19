@@ -1,12 +1,37 @@
 .icon-button {
-  background-color: #b53c3c;
+
+  $primary: #c72323;
+  background-color: $primary;
   height: 45px;
   width: 45px;
   border-radius: 45px;
   border: none;
+  -webkit-transition: background-color 100ms ease-in-out;
+  -moz-transition: background-color 100ms ease-in-out;
+  -o-transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+
+  &.label {
+    width: auto;
+    border-radius: 20px;
+    padding: 0 20px;
+    span {
+      font-size: 12px;
+    }
+  }
+  &:hover {
+    background-color: darken($primary, 15%)
+  }
 
   &.transparent {
     background-color: transparent;
+    &:hover {
+      background-color: darken($primary, 15%)
+    }
   }
 
   i {

@@ -1,4 +1,5 @@
 .user-list-item {
+
   display: flex;
   align-items: center;
   border: 1px solid #ddd;
@@ -10,8 +11,26 @@
     flex: 1;
     display: flex;
     align-items: center;
+    color: #333;
+    &:hover {
+      text-decoration: none;
+      color: #666;
+    }
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    h5 {
+      margin: 0;
+      color: #999;
+      font-weight: normal;
+      margin-top: 5px;
+    }
   }
+
   .profile-pic {
+
     height: 60px;
     width: 60px;
     border-radius: 30px;

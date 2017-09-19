@@ -2,9 +2,10 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Button, ControlLabel} from 'react-bootstrap';
+import {ControlLabel} from 'react-bootstrap';
 import {Form, Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router';
+import {IconButton} from '../../components/IconButton/IconButton';
 
 import './login.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -36,7 +37,11 @@ class Login extends React.Component {
             type="password"
             name="password"/>
           <br />
-          <Button type="submit">Login</Button>
+          <IconButton
+            type="submit"
+            label="Login"
+            icon="ion-log-in"
+          />
 
           <br /><br />
           <Link to={'/register'}>Register</Link>

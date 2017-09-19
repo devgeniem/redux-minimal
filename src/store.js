@@ -14,8 +14,6 @@ const middlewareArr = [];
 middlewareArr.push(routerMiddleware(browserHistory));
 middlewareArr.push(thunk);
 
-
-
 // add the freeze dev middleware
 if (process.env.NODE_ENV !== 'production') {
   middlewareArr.push(freeze);
