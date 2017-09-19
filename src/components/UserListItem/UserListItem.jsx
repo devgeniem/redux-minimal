@@ -11,8 +11,9 @@ export class UserListItem extends React.Component {
     if (url) {
       return (
         <div className="profile-pic">
-          <img src={`http://${url}`}
-               alt={email}
+          <img
+            src={`http://${url}`}
+            alt={email}
           />
         </div>
       );

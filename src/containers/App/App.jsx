@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Button} from 'react-bootstrap';
+import {IconButton} from '../../components/IconButton/IconButton';
 
 import * as UserAPI from '../../api/userApi';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -29,9 +29,9 @@ class App extends React.Component { //eslint-disable-line
   }
 
 
-  _renderLogout() {
+  renderLogout() {
     return this.props.authenticated ?
-      <Button className="logout-button" onClick={this.handleLogoutClick}>Logout</Button> : '';
+      <IconButton icon="ion-log-out" transparent={true} onClick={this.handleLogoutClick} /> : '';
   }
 
   render() {
@@ -41,7 +41,7 @@ class App extends React.Component { //eslint-disable-line
           <h1>
             <Link to={'/'}>SB2 Test</Link>
           </h1>
-          {this._renderLogout()}
+          {this.renderLogout()}
         </header>
 
         <div className="app-main">

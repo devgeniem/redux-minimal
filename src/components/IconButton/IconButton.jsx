@@ -11,12 +11,12 @@ export class IconButton extends React.Component {
     if (transparent) extraClasses += ' transparent';
     return (
       <button
-        className="icon-button"
+        className={`icon-button ${extraClasses}`}
         onClick={(e) => {
           e.preventDefault();
           onClick();
         }}>
-        <i className={`icon ${icon} ${extraClasses}`}/>
+        <i className={`icon ${icon}`}/>
       </button>
     );
   }

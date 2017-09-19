@@ -10,18 +10,16 @@ import Register from './containers/Register/Register';
 
 const checkAuth = (nextState, replace) => {
   const state = store.getState();
-  const authenticated = state.authentication.user && state.authentication.user.loggedIn;
+  const authenticated = state.authentication.user &&
+    state.authentication.user.loggedIn;
 
-  // TODO: remove
-  return;
   if (!authenticated) {
     replace({
       pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
+      state: {nextPathname: nextState.location.pathname},
     });
   }
 };
-
 
 // build the router
 const router = (

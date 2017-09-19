@@ -4,6 +4,11 @@
   width: 45px;
   border-radius: 45px;
   border: none;
+
+  &.transparent {
+    background-color: transparent;
+  }
+
   i {
     color: #fff;
     font-size: 30px;
