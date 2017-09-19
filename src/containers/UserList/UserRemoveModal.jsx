@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Modal} from 'react-bootstrap';
-import {IconButton} from '../../components/IconButton/IconButton';
+import { Modal } from 'react-bootstrap';
+import { IconButton } from '../../components/IconButton/IconButton';
 import './user-remove-modal.scss';
 
 export class UserRemoveModal extends React.Component {
   render() {
-    const {show, handleConfirm, handleDismiss, user} = this.props;
+    const { show, handleConfirm, handleDismiss, user } = this.props;
     return (<Modal className="user-remove-modal" show={show}>
       <Modal.Header>
         <h1>Removing {user.email}</h1>

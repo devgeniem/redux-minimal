@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button} from 'react-bootstrap';
 import './img-uploader.scss';
-import {IconButton} from '../../components/IconButton/IconButton';
+import { IconButton } from '../../components/IconButton/IconButton';
 
 export class ImgUploader extends React.Component {
 
@@ -50,7 +49,7 @@ export class ImgUploader extends React.Component {
       elem = (<IconButton
         onClick={this.handleStartImgUpload}
         icon="ion-aperture"
-        label="Upload picture"/>);
+        label="Upload picture" />);
     }
     return elem;
   }

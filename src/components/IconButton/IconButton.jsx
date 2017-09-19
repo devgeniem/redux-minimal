@@ -5,7 +5,7 @@ import './icon-button.scss';
 export class IconButton extends React.Component {
 
   render() {
-    const {icon, transparent, onClick, label, type, disabled} = this.props;
+    const { icon, transparent, onClick, label, type, disabled } = this.props;
     let extraClasses = '';
     if (transparent) extraClasses += ' transparent';
     if (label) extraClasses += ' label';
@@ -17,7 +17,7 @@ export class IconButton extends React.Component {
         onClick={(e) => {
           onClick();
         }}>
-        <i className={`icon ${icon}`}/>
+        <i className={`icon ${icon}`} />
         {label ? <span className="label">{label}</span> : null}
       </button>
     );

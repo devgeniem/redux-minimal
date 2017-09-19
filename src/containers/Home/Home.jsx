@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import UserList from '../UserList/UserList';
 
 class Home extends React.Component {
   render() {
-    const {users} = this.props;
+    const { users } = this.props;
     return (
       <div className="app">
-        <UserList users={users} />
+        <UserList users={users}/>
       </div>
     );
   }

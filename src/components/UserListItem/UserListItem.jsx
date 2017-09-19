@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
-import {IconButton} from '../IconButton/IconButton';
+import { IconButton } from '../IconButton/IconButton';
 import './user-list-item.scss';
 
 export class UserListItem extends React.Component {
 
   renderProfilePic() {
-    const {url, email} = this.props.user;
+    const { url, email } = this.props.user;
     if (url) {
       return (
         <div className="profile-pic">
@@ -18,12 +18,12 @@ export class UserListItem extends React.Component {
         </div>
       );
     } else {
-      return <div className="profile-pic placeholder"/>;
+      return <div className="profile-pic placeholder" />;
     }
   }
 
   render() {
-    const {name, id, email} = this.props.user;
+    const { name, id, email } = this.props.user;
 
     return (
       <div className="user-list-item">
@@ -34,7 +34,7 @@ export class UserListItem extends React.Component {
             <h5>{name}</h5>
           </div>
         </Link>
-        <IconButton onClick={this.props.onDeleteClick} icon="ion-ios-trash"/>
+        <IconButton onClick={this.props.onDeleteClick} icon="ion-ios-trash" />
       </div>
     );
   }

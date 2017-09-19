@@ -1,18 +1,25 @@
 .app-header {
-  height: 50px;
+
+  height: 80px;
   background-color: #c72323;
   padding: 10px;
   align-items: center;
   display: flex;
 
+
+  a {
+    outline:none;
+  }
+
+  .logo {
+    height: 55px;
+    cursor:pointer;
+  }
   .icon-button {
     margin-right: 0;
     margin-left: auto;
   }
-  a {
-    color: #fff;
-    margin-left: auto;
-  }
+
   h1 {
     padding: 0;
     margin: 0;

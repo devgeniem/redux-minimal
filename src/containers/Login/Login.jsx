@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ControlLabel} from 'react-bootstrap';
-import {Form, Field, reduxForm} from 'redux-form';
-import {Link} from 'react-router';
-import {IconButton} from '../../components/IconButton/IconButton';
+import { connect } from 'react-redux';
+import { ControlLabel } from 'react-bootstrap';
+import { Form, Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router';
+import { IconButton } from '../../components/IconButton/IconButton';
 
 import './login.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -23,19 +23,19 @@ class Login extends React.Component {
 
   render() {
 
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
     return (
       <div className="login-container">
         <Form onSubmit={handleSubmit(this.handleLoginSubmit)}>
           <ControlLabel htmlFor="email">Email</ControlLabel>
-          <Field className="form-control" component="input" name="email"/>
+          <Field className="form-control" component="input" name="email" />
           <br />
           <ControlLabel htmlFor="password">Password</ControlLabel>
           <Field
             className="form-control"
             component="input"
             type="password"
-            name="password"/>
+            name="password" />
           <br />
           <IconButton
             type="submit"

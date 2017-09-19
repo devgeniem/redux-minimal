@@ -1,9 +1,9 @@
 import React from 'react';
 import uuid from 'uuid';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {UserListItem} from '../../components/UserListItem/UserListItem';
-import {UserRemoveModal} from './UserRemoveModal';
+import { connect } from 'react-redux';
+import { UserListItem } from '../../components/UserListItem/UserListItem';
+import { UserRemoveModal } from './UserRemoveModal';
 import './user-list.scss';
 
 import * as UserAPI from '../../api/userApi';
@@ -20,7 +20,6 @@ class UserList extends React.Component {
     this.openRemovePrompt = this.openRemovePrompt.bind(this);
     this.closeRemovePrompt = this.closeRemovePrompt.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
-
   }
 
   handleDeleteClick(userId) {
@@ -72,7 +71,7 @@ class UserList extends React.Component {
 }
 
 UserList.defaultProps = {
-  users: PropTypes.arrayOf(PropTypes.shape({})),
+  users: [],
 };
 
 UserList.propTypes = {

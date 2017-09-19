@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {IconButton} from '../../components/IconButton/IconButton';
-
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { IconButton } from '../../components/IconButton/IconButton';
+import logo from '../../images/sb2.svg';
 import * as UserAPI from '../../api/userApi';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
@@ -28,19 +28,28 @@ class App extends React.Component { //eslint-disable-line
     this.props.dispatch(AuthenticationAPI.logout());
   }
 
-
   renderLogout() {
-    return this.props.authenticated ?
-      <IconButton icon="ion-log-out" transparent={true} onClick={this.handleLogoutClick} /> : '';
+    const transparent = true;
+    return this.props.authenticated
+      ? <IconButton
+        icon="ion-log-out"
+        transparent={transparent}
+        onClick={this.handleLogoutClick} />
+      : '';
   }
 
   render() {
     return (
       <div className="container">
         <header className="app-header">
-          <h1>
-            <Link to={'/'}>SB2 Test</Link>
-          </h1>
+          <Link to={'/'}>
+            <img
+              className="logo"
+              alt="SB2"
+              src={logo}
+            />
+          </Link>
+
           {this.renderLogout()}
         </header>
 
@@ -51,7 +60,6 @@ class App extends React.Component { //eslint-disable-line
     );
   }
 }
-
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
@@ -66,7 +74,8 @@ App.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    authenticated: state.authentication.user && state.authentication.user.loggedIn,
+    authenticated: state.authentication.user &&
+    state.authentication.user.loggedIn,
   };
 };
 export default connect(mapStateToProps)(App);

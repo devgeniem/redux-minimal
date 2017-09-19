@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Form, Field, reduxForm} from 'redux-form';
-import {Row, Col} from 'react-bootstrap';
-import {IconButton} from '../../components/IconButton/IconButton';
+import { Form, Field, reduxForm } from 'redux-form';
+import { Row, Col } from 'react-bootstrap';
+import { IconButton } from '../../components/IconButton/IconButton';
 import * as UserAPI from '../../api/userApi';
 
-import {ImgUploader} from '../../components/ImgUploader/ImgUploader';
+import { ImgUploader } from '../../components/ImgUploader/ImgUploader';
 
 class UserPage extends React.Component {
 
@@ -20,7 +20,7 @@ class UserPage extends React.Component {
   }
 
   render() {
-    const {handleSubmit, invalid, user} = this.props;
+    const { handleSubmit, invalid, user } = this.props;
     const heading = `Editing ${user.email}`;
 
     return (
@@ -35,7 +35,7 @@ class UserPage extends React.Component {
                 name="profilePic"
                 image={user.url}
                 component={ImgUploader}
-                type="file"/>
+                type="file" />
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>
@@ -45,14 +45,14 @@ class UserPage extends React.Component {
                 name="name"
                 placeholder="Name"
                 component="input"
-                required/>
+                required />
               <br />
 
               <IconButton
                 icon="ion-checkmark"
                 disabled={invalid}
                 type="submit"
-                label="Save"/>
+                label="Save" />
             </Col>
           </Row>
 

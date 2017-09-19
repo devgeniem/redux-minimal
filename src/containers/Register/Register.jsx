@@ -1,10 +1,10 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ControlLabel} from 'react-bootstrap';
-import {Form, Field, reduxForm} from 'redux-form';
-import {IconButton} from '../../components/IconButton/IconButton';
+import { connect } from 'react-redux';
+import { ControlLabel } from 'react-bootstrap';
+import { Form, Field, reduxForm } from 'redux-form';
+import { IconButton } from '../../components/IconButton/IconButton';
 import './register.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
@@ -20,7 +20,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const {handleSubmit, invalid} = this.props;
+    const { handleSubmit, invalid } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
@@ -31,7 +31,7 @@ class Register extends React.Component {
             className="form-control"
             component="input"
             name="email"
-            required/>
+            required />
 
           <br />
 
@@ -42,7 +42,7 @@ class Register extends React.Component {
             component="input"
             type="password"
             name="password"
-            required/>
+            required />
 
           <br />
 
