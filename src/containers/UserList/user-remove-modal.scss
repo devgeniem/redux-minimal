@@ -1,0 +1,11 @@
+.user-remove-modal {
+  .modal-footer {
+    display: flex;
+    button {
+      margin-right: 5px;
+      &:last-of-type  {
+        margin-right: 0;
+      }
+    }
+  }
+}
