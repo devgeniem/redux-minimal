@@ -2,9 +2,9 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Button, ControlLabel} from 'react-bootstrap';
+import {ControlLabel} from 'react-bootstrap';
 import {Form, Field, reduxForm} from 'redux-form';
-
+import {IconButton} from '../../components/IconButton/IconButton';
 import './register.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
@@ -20,21 +20,38 @@ class Register extends React.Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
+    const {handleSubmit, invalid} = this.props;
 
     return (
       <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 
         <div className="login-container">
           <ControlLabel htmlFor="email">Email</ControlLabel>
-          <Field className="form-control" component="input" name="email"
-                 required/>
+          <Field
+            className="form-control"
+            component="input"
+            name="email"
+            required/>
+
           <br />
+
           <ControlLabel htmlFor="password">Password</ControlLabel>
-          <Field className="form-control" component="input" type="password"
-                 name="password" required/>
+
+          <Field
+            className="form-control"
+            component="input"
+            type="password"
+            name="password"
+            required/>
+
           <br />
-          <Button disabled={this.props.invalid} type="submit">Register</Button>
+
+          <IconButton
+            type="submit"
+            label="Register"
+            invalid={invalid}
+            icon="ion-person-add"
+          />
         </div>
       </Form>
     );
@@ -49,9 +66,7 @@ Register.propTypes = {
 
 Register.defaultProps = {
   invalid: false,
-  handleSubmit: () => {
-    return null;
-  },
+  handleSubmit: () => {},
 };
 
 // decorate the form component
