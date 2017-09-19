@@ -20,8 +20,6 @@ class App extends React.Component { //eslint-disable-line
 
   componentWillMount() {
     this.props.dispatch(UserAPI.fetchUsers());
-    this.props.dispatch(AuthenticationAPI.getSession());
-
   }
 
   handleLogoutClick() {

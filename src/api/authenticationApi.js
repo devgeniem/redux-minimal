@@ -29,20 +29,15 @@ export const register = (user) => {
 
 export const logout = () => {
   return (dispatch) => {
-    return Axios.post(`${baseURL}/logout`).then((response) => {
+    return Axios.post(`${baseURL}/logout`, null, {
+      withCredentials: true,
+    }).then((response) => {
+
       dispatch(authenticationActions.logoutSuccess(response.data));
+
       browserHistory.push('/login');
     }).catch((error) => {
-      throw new Error(error);
-    });
-  };
-};
 
-export const getSession = () => {
-  return (dispatch) => {
-    return Axios.get(`${baseURL}/session`).then((response) => {
-      console.log(response);
-    }).catch((error) => {
       throw new Error(error);
     });
   };
