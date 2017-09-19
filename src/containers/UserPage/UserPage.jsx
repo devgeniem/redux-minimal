@@ -28,14 +28,14 @@ class UserPage extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     const heading = `Editing ${this.props.user.email}`;
-
+console.log(this.props);
     return (
       <div className="users-list">
         <h1>{heading}</h1>
-        <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <Form onSubmit={handleSubmit(this.handleFormSubmit)} encType="multipart/form-data">
           <Row>
             <Col sm={6}>
-              <ImgUploader handleSave={this.handleAvatarSave}/>
+              <Field name="profilePic" image={this.props.user.url} component={ImgUploader} type="file"/>
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>
@@ -56,17 +56,19 @@ UserPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   user: PropTypes.shape({
     name: PropTypes.string,
+    email: PropTypes.string,
+    url: PropTypes.string,
     id: PropTypes.number,
   }),
-  params: PropTypes.shape({
-    id: PropTypes.string,
-  })
 };
 
 UserPage.defaultProps = {
   invalid: false,
   user: {},
   params: {},
+  handleSubmit: () => {
+    console.warn('yeha');
+  },
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -74,7 +76,6 @@ const mapStateToProps = (state, ownProps) => {
   if (state.users && state.users.users) {
     user = state.users.users.find(x => Number(x.id) === Number(ownProps.params.id)) || {};
   }
-  console.log(user);
   return {
     user,
     initialValues: user,
@@ -85,6 +86,7 @@ const mapStateToProps = (state, ownProps) => {
 const UserForm = reduxForm({
   form: 'user_edit',
   enableReinitialize: true,
+  multipartForm: true,
   validate: (values) => {
     const errors = {};
     if (!values.name) errors.name = 'Name is required';

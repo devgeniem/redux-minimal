@@ -3,12 +3,7 @@ import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import './user-list-item.scss';
 
-
 export class UserListItem extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const user = this.props.user;

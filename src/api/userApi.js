@@ -6,44 +6,44 @@ const baseURL = 'http://localhost:8080';
 const uploadAPI = `${baseURL}/upload`;
 const API = `${baseURL}/user/`;
 
-
 export const updateUser = (user) => {
   return (dispatch) => {
-    console.log('updating', user)
-    return Axios.post(`${API}${user.id}/`, user)
-      .then((response) => {
-        dispatch(userActions.updateUserSuccess(response.data));
-        browserHistory.push('/');
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+
+    const formData = new FormData();
+    formData.append('name', user.name);
+    formData.append('url', user.profilePic);
+    return Axios.post(`${API}${user.id}/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=-',
+      },
+    }).then((response) => {
+      dispatch(userActions.updateUserSuccess(response.data));
+      browserHistory.push('/');
+    }).catch((error) => {
+      throw new Error(error);
+    });
   };
 };
 
 export const deleteUser = (userId) => {
   return (dispatch) => {
-    return Axios.delete(API + userId)
-      .then((response) => {
-        dispatch(userActions.deleteUserSuccess(response.data));
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+    return Axios.delete(API + userId).then((response) => {
+      dispatch(userActions.deleteUserSuccess(response.data));
+    }).catch((error) => {
+      throw new Error(error);
+    });
   };
 };
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    return Axios.get(API)
-      .then((response) => {
-        dispatch(userActions.fetchUsersSuccess(response.data));
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+    return Axios.get(API).then((response) => {
+      dispatch(userActions.fetchUsersSuccess(response.data));
+    }).catch((error) => {
+      throw new Error(error);
+    });
   };
-}
+};
 
 export const uploadAvatar = (file, user) => {
   return (dispatch) => {
@@ -60,17 +60,15 @@ export const uploadAvatar = (file, user) => {
       headers: {
         'Content-Type': 'multipart/form-data; boundary=-',
       },
-    })
-      .then((response) => {
-        const avatarUrl = `${baseURL}/${response.data[0].path}/`;
-        const obj = {
-          avatarUrl,
-          user,
-        };
-        dispatch(userActions.avatarUploadSuccess(obj));
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
+    }).then((response) => {
+      const avatarUrl = `${baseURL}/${response.data[0].path}/`;
+      const obj = {
+        avatarUrl,
+        user,
+      };
+      dispatch(userActions.avatarUploadSuccess(obj));
+    }).catch((error) => {
+      throw new Error(error);
+    });
   };
-}
+};

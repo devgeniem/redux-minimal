@@ -8,7 +8,6 @@ import {Form, Field, reduxForm} from 'redux-form';
 import './register.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
-
 class Register extends React.Component {
 
   constructor(props) {
@@ -21,17 +20,19 @@ class Register extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
 
     return (
       <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 
         <div className="login-container">
           <ControlLabel htmlFor="email">Email</ControlLabel>
-          <Field className="form-control" component="input" name="email" required/>
+          <Field className="form-control" component="input" name="email"
+                 required/>
           <br />
           <ControlLabel htmlFor="password">Password</ControlLabel>
-          <Field className="form-control" component="input" type="password" name="password" required/>
+          <Field className="form-control" component="input" type="password"
+                 name="password" required/>
           <br />
           <Button disabled={this.props.invalid} type="submit">Register</Button>
         </div>
@@ -39,7 +40,6 @@ class Register extends React.Component {
     );
   }
 }
-
 
 Register.propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -49,6 +49,9 @@ Register.propTypes = {
 
 Register.defaultProps = {
   invalid: false,
+  handleSubmit: () => {
+    return null;
+  },
 };
 
 // decorate the form component

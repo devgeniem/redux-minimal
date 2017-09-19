@@ -9,7 +9,6 @@ import {Link} from 'react-router';
 import './login.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
-
 class Login extends React.Component {
 
   constructor(props) {
@@ -18,13 +17,12 @@ class Login extends React.Component {
   }
 
   handleLoginSubmit(user) {
-    console.log(user);
     this.props.dispatch(AuthenticationAPI.login(user));
   }
 
   render() {
 
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     return (
       <div className="login-container">
         <Form onSubmit={handleSubmit(this.handleLoginSubmit)}>
@@ -32,7 +30,11 @@ class Login extends React.Component {
           <Field className="form-control" component="input" name="email"/>
           <br />
           <ControlLabel htmlFor="password">Password</ControlLabel>
-          <Field className="form-control" component="input" type="password" name="password"/>
+          <Field
+            className="form-control"
+            component="input"
+            type="password"
+            name="password"/>
           <br />
           <Button type="submit">Login</Button>
 
@@ -44,7 +46,11 @@ class Login extends React.Component {
   }
 }
 
-
+Login.defaultProps = {
+  handleSubmit: () => {
+    return null;
+  },
+};
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,

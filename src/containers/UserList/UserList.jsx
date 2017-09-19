@@ -9,35 +9,31 @@ import * as UserAPI from '../../api/userApi';
 
 class UserList extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   handleDeleteClick(userId) {
     this.props.dispatch(UserAPI.deleteUser(userId));
   }
 
   render() {
-
     const users = this.props.users || [];
 
     return (
       <div className="user-list">
         <ul>
-          { users ? users.map((user) => <li key={uuid()}><UserListItem onDeleteClick={() => {
-            this.handleDeleteClick(user.id);
-          }} user={user}/></li>) : '-' }
+          { users ? users.map(
+            user => <li key={uuid()}>
+              <UserListItem
+                onDeleteClick={() => {
+                  this.handleDeleteClick(user.id);
+                }} user={user}/></li>) : '-' }
         </ul>
       </div>
     );
   }
 }
 
-
 UserList.defaultProps = {
   users: PropTypes.arrayOf(PropTypes.shape({})),
 };
-
 
 UserList.propTypes = {
   dispatch: PropTypes.func.isRequired,

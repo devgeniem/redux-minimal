@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './img-uploader.scss';
 import {Button} from 'react-bootstrap';
+import './img-uploader.scss';
 
 export class ImgUploader extends React.Component {
 
   constructor(props) {
     super(props);
     this.handleImgChange = this.handleImgChange.bind(this);
-    this.handleImgSave = this.handleImgSave.bind(this);
     this.handleStartImgUpload = this.handleStartImgUpload.bind(this);
 
     this.state = {
@@ -17,6 +16,39 @@ export class ImgUploader extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.setState({
+      preview: null,
+    });
+  }
+
+  _renderPreview() {
+    let elem = null;
+    // FIXME: server should provide the protocol (http://)
+    const url = this.state.preview
+      ? this.state.preview
+      : `http://${this.props.image}?${new Date().getTime()}`;
+
+    if (this.props.image || this.state.preview) {
+      elem = (
+        <div className="image-container">
+          <img
+            className="img-responsive preview-img"
+            src={url}
+            alt=""/>
+          <Button onClick={this.handleStartImgUpload}>Change picture</Button>
+        </div>
+      );
+    } else {
+      elem =
+        <Button onClick={this.handleStartImgUpload}>Upload picture</Button>;
+    }
+    return elem;
+  }
+
+  handleStartImgUpload() {
+    this.inputElem.click();
+  }
 
   handleImgChange(e) {
     e.preventDefault();
@@ -28,61 +60,41 @@ export class ImgUploader extends React.Component {
 
     reader.onloadend = () => {
       this.setState({
-        file,
         preview: reader.result,
-        uploaded: false,
       });
     };
 
     reader.readAsDataURL(file);
-  }
-
-  handleStartImgUpload() {
-    this.inputElement.click();
-  }
-
-  handleImgSave() {
-    this.props.handleSave(this.state.file);
-  }
-
-  _renderPreview() {
-    let elem = null;
-    if (this.state.preview) {
-      elem = <img onClick={this.handleStartImgUpload} className="img-responsive preview-img" src={this.state.preview}
-                  alt=""/>;
-    } else {
-      elem = <Button onClick={this.handleStartImgUpload}>Upload pic</Button>;
-    }
-    return elem;
-
-  }
-
-  _renderSave() {
-    if (this.state.preview && !this.state.uploaded) {
-      return <Button onClick={this.handleImgSave}>Save Image</Button>;
-    } else {
-      return null;
-    }
+    const onChange = this.props.input.onChange;
+    onChange(file);
   }
 
   render() {
     return (
       <div className="img-uploader">
         {this._renderPreview()}
-        {this._renderSave()}
-        <input type="file" ref={input => this.inputElement = input} onChange={this.handleImgChange}/>
-      </div>
+        <input
+          name={this.props.input.name}
+          ref={(input) => {
+            this.inputElem = input;
+          }}
+          onChange={this.handleImgChange}
+          type="file"
+        /></div>
     );
   }
+
 }
 
-
 ImgUploader.defaultProps = {
-  handleSave: () => {
-    throw new Error('Save callback is undefined');
-  },
+  image: null,
+  input: null,
 };
 
 ImgUploader.propTypes = {
-  handleSave: PropTypes.func.isRequired,
+  image: PropTypes.string,
+  input: PropTypes.shape({
+    onChange: PropTypes.func,
+    name: PropTypes.string,
+  }),
 };
