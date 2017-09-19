@@ -8,6 +8,10 @@
   justify-content: center;
   flex-direction: column;
 
+  &.no-img {
+    background:#f0f0f0;
+  }
+
   .image-container {
 
     position: relative;
@@ -47,6 +51,8 @@
   }
   button {
     width: 100%;
+    box-shadow:2px 2px 5px rgba(0,0,0,0.35);
+
   }
 
   input[type=file] {

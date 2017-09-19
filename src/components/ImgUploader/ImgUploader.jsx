@@ -79,8 +79,10 @@ export class ImgUploader extends React.Component {
   }
 
   render() {
+    const hasImg = this.props.image || this.state.preview ? '' : 'no-img';
+
     return (
-      <div className="img-uploader">
+      <div className={`img-uploader ${hasImg}`}>
         {this._renderPreview()}
         <input
           name={this.props.input.name}
