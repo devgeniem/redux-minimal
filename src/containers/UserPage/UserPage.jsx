@@ -13,33 +13,30 @@ class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleAvatarSave = this.handleAvatarSave.bind(this);
-
   }
 
   handleFormSubmit(user) {
     this.props.dispatch(UserAPI.updateUser(user));
   }
 
-  handleAvatarSave(file) {
-    this.props.dispatch(UserAPI.uploadAvatar(file, this.props.user));
-  }
-
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     const heading = `Editing ${this.props.user.email}`;
-console.log(this.props);
+
     return (
       <div className="users-list">
         <h1>{heading}</h1>
-        <Form onSubmit={handleSubmit(this.handleFormSubmit)} encType="multipart/form-data">
+        <Form onSubmit={handleSubmit(this.handleFormSubmit)}
+              encType="multipart/form-data">
           <Row>
             <Col sm={6}>
-              <Field name="profilePic" image={this.props.user.url} component={ImgUploader} type="file"/>
+              <Field name="profilePic" image={this.props.user.url}
+                     component={ImgUploader} type="file"/>
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>
-              <Field className="form-control" name="name" placeholder="Name" component="input" required/>
+              <Field className="form-control" name="name" placeholder="Name"
+                     component="input" required/>
             </Col>
           </Row>
           <br />
@@ -74,7 +71,8 @@ UserPage.defaultProps = {
 const mapStateToProps = (state, ownProps) => {
   let user = {};
   if (state.users && state.users.users) {
-    user = state.users.users.find(x => Number(x.id) === Number(ownProps.params.id)) || {};
+    user = state.users.users.find(
+        x => Number(x.id) === Number(ownProps.params.id)) || {};
   }
   return {
     user,
