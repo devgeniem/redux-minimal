@@ -35,7 +35,8 @@ class Login extends React.Component {
             className="form-control"
             component="input"
             type="password"
-            name="password" />
+            name="password"
+          />
           <br />
           <IconButton
             type="submit"

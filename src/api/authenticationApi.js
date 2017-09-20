@@ -6,7 +6,8 @@ import { fetchUsers } from './userApi';
 
 const baseURL = 'http://localhost:8080';
 
-export const login = (user) => {
+export const login = (mappedUser) => {
+  const user = mappedUser.toJS();
   return (dispatch) => {
     return Axios.post(`${baseURL}/login`, user).then((response) => {
 

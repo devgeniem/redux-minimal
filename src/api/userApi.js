@@ -15,6 +15,7 @@ export const updateUser = (userMap) => {
     if (profilePic) formData.append('url', profilePic);
 
     return Axios.post(`${API}${id}/`, formData, {
+      withCredentials: true,
       headers: {
         'Content-Type': 'multipart/form-data; boundary=-',
       },
@@ -29,7 +30,9 @@ export const updateUser = (userMap) => {
 
 export const deleteUser = (userId) => {
   return (dispatch) => {
-    return Axios.delete(API + userId).then((response) => {
+    return Axios.delete(API + userId, {
+      withCredentials: true,
+    }).then((response) => {
       dispatch(userActions.deleteUserSuccess(response.data));
     }).catch((error) => {
       throw new Error(error);
@@ -39,7 +42,9 @@ export const deleteUser = (userId) => {
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    return Axios.get(API).then((response) => {
+    return Axios.get(API, {
+      withCredentials: true,
+    }).then((response) => {
       dispatch(userActions.fetchUsersSuccess(response.data));
     }).catch((error) => {
       throw new Error(error);

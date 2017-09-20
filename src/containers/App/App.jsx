@@ -53,6 +53,9 @@ class App extends React.Component { //eslint-disable-line
         </header>
 
         <div className="app-main">
+          <div className="error-msg">
+
+          </div>
           {this.props.children}
         </div>
       </div>
