@@ -29,12 +29,16 @@ class App extends React.Component { //eslint-disable-line
 
   renderLogout() {
     const transparent = true;
-    return localStorage.getItem('loggedIn')
-      ? <IconButton
-        icon="ion-log-out"
-        transparent={transparent}
-        onClick={this.handleLogoutClick} />
-      : '';
+    if (localStorage.getItem('loggedIn')) {
+      return (
+        <IconButton
+          icon="ion-log-out"
+          transparent={transparent}
+          onClick={this.handleLogoutClick}
+        />)
+        ;
+    }
+    return null;
   }
 
   render() {

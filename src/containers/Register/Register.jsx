@@ -39,7 +39,8 @@ class Register extends React.Component {
             className="form-control"
             component="input"
             name="email"
-            required />
+            required
+          />
 
           <br />
 
@@ -50,7 +51,8 @@ class Register extends React.Component {
             component="input"
             type="password"
             name="password"
-            required />
+            required
+          />
 
           <br />
 
@@ -70,11 +72,13 @@ Register.propTypes = {
   dispatch: PropTypes.func.isRequired,
   invalid: PropTypes.bool,
   handleSubmit: PropTypes.func,
+  errorMsg: PropTypes.string,
 };
 
 Register.defaultProps = {
   invalid: false,
   handleSubmit: () => {},
+  errorMsg: null,
 };
 
 // decorate the form component

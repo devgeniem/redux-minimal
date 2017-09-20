@@ -22,7 +22,7 @@ export class ImgUploader extends React.Component {
     });
   }
 
-  _renderPreview() {
+  renderPreview() {
     let elem = null;
     // FIXME: server should provide the protocol (http://)
 
@@ -46,10 +46,12 @@ export class ImgUploader extends React.Component {
         </div>
       );
     } else {
-      elem = (<IconButton
-        onClick={this.handleStartImgUpload}
-        icon="ion-aperture"
-        label="Upload picture" />);
+      elem = (
+        <IconButton
+          onClick={this.handleStartImgUpload}
+          icon="ion-aperture"
+          label="Upload picture"
+        />);
     }
     return elem;
   }
@@ -82,7 +84,7 @@ export class ImgUploader extends React.Component {
 
     return (
       <div className={`img-uploader ${hasImg}`}>
-        {this._renderPreview()}
+        {this.renderPreview()}
         <input
           name={this.props.input.name}
           ref={(input) => {

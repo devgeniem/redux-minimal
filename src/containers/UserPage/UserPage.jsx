@@ -35,7 +35,8 @@ class UserPage extends React.Component {
                 name="profilePic"
                 image={user.url}
                 component={ImgUploader}
-                type="file" />
+                type="file"
+              />
             </Col>
             <Col sm={6}>
               <label className="form-label" htmlFor="name">Name</label>
@@ -45,14 +46,16 @@ class UserPage extends React.Component {
                 name="name"
                 placeholder="Name"
                 component="input"
-                required />
+                required
+              />
               <br />
 
               <IconButton
                 icon="ion-checkmark"
                 disabled={invalid}
                 type="submit"
-                label="Save" />
+                label="Save"
+              />
             </Col>
           </Row>
 

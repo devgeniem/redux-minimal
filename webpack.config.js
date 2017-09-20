@@ -49,12 +49,6 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        pathRewrite: { '^/api': '' },
-      },
-    },
   },
   devtool: '#eval-source-map',
   plugins: [

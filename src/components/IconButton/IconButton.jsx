@@ -14,9 +14,10 @@ export class IconButton extends React.Component {
         className={`icon-button ${extraClasses}`}
         type={type}
         disabled={disabled}
-        onClick={(e) => {
+        onClick={() => {
           onClick();
-        }}>
+        }}
+      >
         <i className={`icon ${icon}`} />
         {label ? <span className="label">{label}</span> : null}
       </button>

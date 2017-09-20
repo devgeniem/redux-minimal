@@ -17,9 +17,8 @@ export class UserListItem extends React.Component {
           />
         </div>
       );
-    } else {
-      return <div className="profile-pic placeholder" />;
     }
+    return <div className="profile-pic placeholder" />;
   }
 
   render() {

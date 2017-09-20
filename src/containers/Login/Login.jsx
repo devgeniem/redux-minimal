@@ -8,7 +8,6 @@ import { Link } from 'react-router';
 import { IconButton } from '../../components/IconButton/IconButton';
 import * as authActions from '../../actions/authActions';
 import './login.scss';
-import validate from './validate';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
 class Login extends React.Component {
@@ -74,7 +73,6 @@ Login.propTypes = {
 // decorate the form component
 const LoginForm = reduxForm({
   form: 'login',
-//  validate,
 })(Login);
 
 const mapStateToProps = (state) => {

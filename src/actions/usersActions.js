@@ -13,7 +13,6 @@ export const createUserSuccess = (user) => {
 };
 
 export const createUserFail = (error) => {
-  console.log('usersaction', error);
   return {
     type: CREATE_USER_FAIL,
     error,

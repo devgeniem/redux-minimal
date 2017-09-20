@@ -11,7 +11,7 @@ export const updateUser = (userMap) => {
     if (name) formData.append('name', name);
     if (profilePic) formData.append('url', profilePic);
 
-    return Axios.post(`/api/user/${id}/`, formData, {
+    return Axios.post(`http://localhost:8080/user/${id}/`, formData, {
       withCredentials: true,
       headers: {
         'Content-Type': 'multipart/form-data; boundary=-',
@@ -27,7 +27,7 @@ export const updateUser = (userMap) => {
 
 export const deleteUser = (userId) => {
   return (dispatch) => {
-    return Axios.delete(`/api/user/${userId}/`, {
+    return Axios.delete(`http://localhost:8080/user/${userId}/`, {
       withCredentials: true,
     }).then((response) => {
       dispatch(userActions.deleteUserSuccess(response.data));
@@ -39,7 +39,7 @@ export const deleteUser = (userId) => {
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    return Axios.get('/api/user', {
+    return Axios.get('http://localhost:8080/user', {
       withCredentials: true,
     }).then((response) => {
       dispatch(userActions.fetchUsersSuccess(response.data));
