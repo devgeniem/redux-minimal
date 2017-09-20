@@ -1,7 +1,8 @@
 import Axios from 'axios';
 import { browserHistory } from 'react-router';
-import * as authenticationActions from '../actions/authActions';
+import * as authActions from '../actions/authActions';
 import * as userActions from '../actions/usersActions';
+
 import { fetchUsers } from './userApi';
 
 const baseURL = 'http://localhost:8080';
@@ -11,14 +12,14 @@ export const login = (mappedUser) => {
   return (dispatch) => {
     return Axios.post(`${baseURL}/login`, user).then((response) => {
 
-      dispatch(authenticationActions.loginSuccess(response.data));
+      dispatch(authActions.loginSuccess(response.data));
       dispatch(fetchUsers());
 
       localStorage.setItem('loggedIn', response.data.loggedIn);
 
       browserHistory.push('/');
     }).catch((error) => {
-      throw new Error(error);
+      dispatch(authActions.loginFail(error));
     });
   };
 };
@@ -30,7 +31,8 @@ export const register = (userMap) => {
       dispatch(userActions.createUserSuccess(response.data));
       browserHistory.push('/login');
     }).catch((error) => {
-      throw new Error(error);
+      console.log('CATCHCHHHH');
+      dispatch(userActions.createUserFail(error));
     });
   };
 };
@@ -41,7 +43,7 @@ export const logout = () => {
       withCredentials: true,
     }).then((response) => {
       localStorage.setItem('loggedIn', response.data.loggedIn);
-      dispatch(authenticationActions.logoutSuccess(response.data));
+      dispatch(authActions.logoutSuccess(response.data));
       browserHistory.push('/login');
     }).catch((error) => {
       localStorage.removeItem('loggedIn');

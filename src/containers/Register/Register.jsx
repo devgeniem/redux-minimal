@@ -6,6 +6,7 @@ import { ControlLabel } from 'react-bootstrap';
 import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { IconButton } from '../../components/IconButton/IconButton';
 import './register.scss';
+import * as authActions from '../../actions/authActions';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
 class Register extends React.Component {
@@ -15,18 +16,24 @@ class Register extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(authActions.clearError());
+  }
+
   handleFormSubmit(user) {
-    console.log(user)
     this.props.dispatch(AuthenticationAPI.register(user));
   }
 
   render() {
-    const { handleSubmit, invalid } = this.props;
+    const { handleSubmit, invalid, errorMsg } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 
         <div className="login-container">
+
+          {(errorMsg) ? <div className="error">{errorMsg}</div> : null}
+
           <ControlLabel htmlFor="email">Email</ControlLabel>
           <Field
             className="form-control"
@@ -75,4 +82,11 @@ const RegisterForm = reduxForm({
   form: 'register',
 })(Register);
 
-export default connect()(RegisterForm);
+const mapStateToProps = (state) => {
+  const errorMsg = state.get('authentication').error;
+  return {
+    errorMsg,
+  };
+};
+
+export default connect(mapStateToProps)(RegisterForm);

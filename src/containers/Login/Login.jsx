@@ -6,6 +6,7 @@ import { ControlLabel } from 'react-bootstrap';
 import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router';
 import { IconButton } from '../../components/IconButton/IconButton';
+import * as authActions from '../../actions/authActions';
 
 import './login.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -17,15 +18,21 @@ class Login extends React.Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(authActions.clearError());
+  }
   handleLoginSubmit(user) {
     this.props.dispatch(AuthenticationAPI.login(user));
   }
 
   render() {
 
-    const { handleSubmit } = this.props;
+    const { handleSubmit, errorMsg } = this.props;
+
     return (
       <div className="login-container">
+        {(errorMsg) ? <div className="error">{errorMsg}</div> : null}
+
         <Form onSubmit={handleSubmit(this.handleLoginSubmit)}>
           <ControlLabel htmlFor="email">Email</ControlLabel>
           <Field className="form-control" component="input" name="email" />
@@ -77,4 +84,11 @@ const LoginForm = reduxForm({
   // },
 })(Login);
 
-export default connect()(LoginForm);
+const mapStateToProps = (state) => {
+  const errorMsg = state.get('authentication').error;
+  return {
+    errorMsg,
+  };
+};
+
+export default connect(mapStateToProps)(LoginForm);

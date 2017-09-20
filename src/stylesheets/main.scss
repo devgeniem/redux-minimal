@@ -1,6 +1,15 @@
 
 ul {
-  margin:0;
-  padding:0;
-  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.error {
+  margin: 15px 0;
+  background: lighten(#c72323, 50%);
+  color: #333;
+  padding: 15px;
+  border: 1px solid #c72323;
+  border-radius: 4px;
 }

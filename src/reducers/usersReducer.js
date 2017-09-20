@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import {
   FETCH_USERS_SUCCESS,
   CREATE_USER_SUCCESS,
+  CREATE_USER_FAIL,
   UPDATE_USER_SUCCESS,
   DELETE_USER_SUCCESS,
 } from '../actions/usersActions';
@@ -27,6 +28,9 @@ export default function users(state = initialState, action) {
       };
     case CREATE_USER_SUCCESS:
       return state;
+    case CREATE_USER_FAIL:
+      console.log('FAILINGGGG')
+      return { ...state, error: action.message.response.data.error.message };
     case
     FETCH_USERS_SUCCESS:
       return { ...state, all: action.users };
