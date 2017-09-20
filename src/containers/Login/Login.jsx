@@ -7,8 +7,8 @@ import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router';
 import { IconButton } from '../../components/IconButton/IconButton';
 import * as authActions from '../../actions/authActions';
-
 import './login.scss';
+import validate from './validate';
 import * as AuthenticationAPI from '../../api/authenticationApi';
 
 class Login extends React.Component {
@@ -21,12 +21,12 @@ class Login extends React.Component {
   componentWillUnmount() {
     this.props.dispatch(authActions.clearError());
   }
+
   handleLoginSubmit(user) {
     this.props.dispatch(AuthenticationAPI.login(user));
   }
 
   render() {
-
     const { handleSubmit, errorMsg } = this.props;
 
     return (
@@ -63,25 +63,18 @@ Login.defaultProps = {
   handleSubmit: () => {
     return null;
   },
+  errorMsg: null,
 };
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
+  errorMsg: PropTypes.string,
 };
 
-Login.propTypes = {};
 // decorate the form component
 const LoginForm = reduxForm({
   form: 'login',
-  // validate: (values) => {
-  //
-  //   values.toJS();
-  //   const errors = {};
-  //   if (!values.email) errors.email = 'Email is required';
-  //   if (!values.password) errors.password = 'Password is required';
-  //
-  //   return errors;
-  // },
+//  validate,
 })(Login);
 
 const mapStateToProps = (state) => {

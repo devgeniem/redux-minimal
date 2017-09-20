@@ -2,9 +2,6 @@ import Axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as userActions from '../actions/usersActions';
 
-const baseURL = 'http://localhost:8080';
-const API = `${baseURL}/user/`;
-
 export const updateUser = (userMap) => {
   const user = userMap.toJS();
   return (dispatch) => {
@@ -14,7 +11,7 @@ export const updateUser = (userMap) => {
     if (name) formData.append('name', name);
     if (profilePic) formData.append('url', profilePic);
 
-    return Axios.post(`${API}${id}/`, formData, {
+    return Axios.post(`/api/user/${id}/`, formData, {
       withCredentials: true,
       headers: {
         'Content-Type': 'multipart/form-data; boundary=-',
@@ -30,7 +27,7 @@ export const updateUser = (userMap) => {
 
 export const deleteUser = (userId) => {
   return (dispatch) => {
-    return Axios.delete(API + userId, {
+    return Axios.delete(`/api/user/${userId}/`, {
       withCredentials: true,
     }).then((response) => {
       dispatch(userActions.deleteUserSuccess(response.data));
@@ -42,7 +39,7 @@ export const deleteUser = (userId) => {
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    return Axios.get(API, {
+    return Axios.get('/api/user', {
       withCredentials: true,
     }).then((response) => {
       dispatch(userActions.fetchUsersSuccess(response.data));

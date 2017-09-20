@@ -5,12 +5,11 @@ import * as userActions from '../actions/usersActions';
 
 import { fetchUsers } from './userApi';
 
-const baseURL = 'http://localhost:8080';
 
 export const login = (mappedUser) => {
   const user = mappedUser.toJS();
   return (dispatch) => {
-    return Axios.post(`${baseURL}/login`, user).then((response) => {
+    return Axios.post('/api/login', user).then((response) => {
 
       dispatch(authActions.loginSuccess(response.data));
       dispatch(fetchUsers());
@@ -27,7 +26,7 @@ export const login = (mappedUser) => {
 export const register = (userMap) => {
   const user = userMap.toJS();
   return (dispatch) => {
-    return Axios.post(`${baseURL}/register`, user).then((response) => {
+    return Axios.post('/api/register', user).then((response) => {
       dispatch(userActions.createUserSuccess(response.data));
       browserHistory.push('/login');
     }).catch((error) => {
@@ -39,7 +38,7 @@ export const register = (userMap) => {
 
 export const logout = () => {
   return (dispatch) => {
-    return Axios.post(`${baseURL}/logout`, null, {
+    return Axios.post('/api/logout', null, {
       withCredentials: true,
     }).then((response) => {
       localStorage.setItem('loggedIn', response.data.loggedIn);

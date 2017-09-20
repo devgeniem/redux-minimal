@@ -9,7 +9,6 @@ global.appRoot = appRoot; // the app root folder, needed by the other webpack co
 
 module.exports = {
   entry: [
-    // http://gaearon.github.io/react-hot-loader/getstarted/
     'webpack-dev-server/client?http://localhost:1337',
     'webpack/hot/only-dev-server',
     'babel-polyfill',
@@ -50,6 +49,12 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
   devtool: '#eval-source-map',
   plugins: [
