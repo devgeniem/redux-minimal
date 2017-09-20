@@ -5,7 +5,6 @@ import * as userActions from '../actions/usersActions';
 
 import { fetchUsers } from './userApi';
 
-
 export const login = (mappedUser) => {
   const user = mappedUser.toJS();
   return (dispatch) => {
@@ -41,12 +40,10 @@ export const logout = () => {
     return Axios.post('/api/logout', null, {
       withCredentials: true,
     }).then((response) => {
-      localStorage.setItem('loggedIn', response.data.loggedIn);
+      localStorage.removeItem('loggedIn');
       dispatch(authActions.logoutSuccess(response.data));
       browserHistory.push('/login');
     }).catch((error) => {
-      localStorage.removeItem('loggedIn');
-
       throw new Error(error);
     });
   };
