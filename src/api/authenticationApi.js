@@ -29,7 +29,6 @@ export const register = (userMap) => {
       dispatch(userActions.createUserSuccess(response.data));
       browserHistory.push('/login');
     }).catch((error) => {
-      console.log('CATCHCHHHH');
       dispatch(userActions.createUserFail(error));
     });
   };

@@ -83,7 +83,7 @@ const RegisterForm = reduxForm({
 })(Register);
 
 const mapStateToProps = (state) => {
-  const errorMsg = state.get('authentication').error;
+  const errorMsg = state.get('users').error;
   return {
     errorMsg,
   };

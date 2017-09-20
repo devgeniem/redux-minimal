@@ -22,15 +22,15 @@ export const loginFail = (response) => {
   return {
     type: LOGIN_FAIL,
     message: response,
-
   };
 };
 
-export const clearError = (response) => {
+export const clearError = () => {
   return {
     type: CLEAR_ERROR,
   };
 };
+
 export const registerSuccess = (user) => {
   return {
     type: REGISTER_SUCCESS,

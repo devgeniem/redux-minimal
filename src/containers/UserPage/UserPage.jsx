@@ -84,7 +84,7 @@ UserPage.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  let users = state.get('users');
+  const users = state.get('users');
 
   let user = {};
   if (users.all) {

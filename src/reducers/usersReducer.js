@@ -29,8 +29,7 @@ export default function users(state = initialState, action) {
     case CREATE_USER_SUCCESS:
       return state;
     case CREATE_USER_FAIL:
-      console.log('FAILINGGGG')
-      return { ...state, error: action.message.response.data.error.message };
+      return { ...state, error: action.error.response.data.error.message };
     case
     FETCH_USERS_SUCCESS:
       return { ...state, all: action.users };
