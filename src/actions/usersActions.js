@@ -4,6 +4,7 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 
 export const createUserSuccess = (user) => {
+  console.log('createUserSuccess', user);
   return {
     type: CREATE_USER_SUCCESS,
     user,

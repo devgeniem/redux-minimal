@@ -22,8 +22,8 @@ export const login = (user) => {
   };
 };
 
-export const register = (user) => {
-  console.log('REGISTER', user);
+export const register = (userMap) => {
+  const user = userMap.toJS();
   return (dispatch) => {
     return Axios.post(`${baseURL}/register`, user).then((response) => {
       dispatch(userActions.createUserSuccess(response.data));

@@ -14,10 +14,10 @@ export default function users(state = initialState, action) {
 
   switch (action.type) {
     case DELETE_USER_SUCCESS:
-      console.log(action);
       return {
         ...state,
-        all: state.all.filter(user => user.id !== action.user.id),
+        all: state.all.filter(
+          user => parseInt(user.id, 10) !== parseInt(action.user.id, 10)),
       };
     case UPDATE_USER_SUCCESS:
       return {
@@ -26,8 +26,9 @@ export default function users(state = initialState, action) {
           (user) => (user.id === action.user.id) ? action.user : user),
       };
     case CREATE_USER_SUCCESS:
-      return state.all.push(action.user);
-    case FETCH_USERS_SUCCESS:
+      return state;
+    case
+    FETCH_USERS_SUCCESS:
       return { ...state, all: action.users };
     default:
       return state;
