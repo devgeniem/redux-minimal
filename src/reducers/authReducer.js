@@ -2,7 +2,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-} from '../actions/authentication';
+} from '../actions/authActions';
 
 export default function authentication(state = {}, action) {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { browserHistory } from 'react-router';
-import * as authenticationActions from '../actions/authentication';
-import * as userActions from '../actions/users';
+import * as authenticationActions from '../actions/authActions';
+import * as userActions from '../actions/usersActions';
 import { fetchUsers } from './userApi';
 
 const baseURL = 'http://localhost:8080';
@@ -23,6 +23,7 @@ export const login = (user) => {
 };
 
 export const register = (user) => {
+  console.log('REGISTER', user);
   return (dispatch) => {
     return Axios.post(`${baseURL}/register`, user).then((response) => {
       dispatch(userActions.createUserSuccess(response.data));

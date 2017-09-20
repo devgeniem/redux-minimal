@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { Row, Col } from 'react-bootstrap';
 import { IconButton } from '../../components/IconButton/IconButton';
 import * as UserAPI from '../../api/userApi';
@@ -84,9 +84,11 @@ UserPage.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  let users = state.get('users');
+
   let user = {};
-  if (state.users && state.users.users) {
-    user = state.users.users.find(
+  if (users.all) {
+    user = users.all.find(
         x => Number(x.id) === Number(ownProps.params.id)) || {};
   }
   return {
@@ -100,11 +102,6 @@ const UserForm = reduxForm({
   form: 'user_edit',
   enableReinitialize: true,
   multipartForm: true,
-  validate: (values) => {
-    const errors = {};
-    if (!values.name) errors.name = 'Name is required';
-    return errors;
-  },
 })(UserPage);
 
 export default connect(mapStateToProps)(UserForm);

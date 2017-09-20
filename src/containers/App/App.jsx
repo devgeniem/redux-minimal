@@ -18,6 +18,10 @@ class App extends React.Component { //eslint-disable-line
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
+  componentWillMount() {
+    const authenticated = localStorage.getItem('loggedIn');
+    if (authenticated) this.props.dispatch(UserAPI.fetchUsers());
+  }
 
   handleLogoutClick() {
     this.props.dispatch(AuthenticationAPI.logout());
@@ -59,18 +63,10 @@ class App extends React.Component { //eslint-disable-line
 App.propTypes = {
   children: PropTypes.node.isRequired,
   dispatch: PropTypes.func.isRequired,
-  authenticated: PropTypes.bool,
 };
 
 App.defaultProps = {
   users: [],
-  authenticated: false,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    authenticated: state.authentication.user &&
-    state.authentication.user.loggedIn,
-  };
-};
-export default connect(mapStateToProps)(App);
+export default connect()(App);

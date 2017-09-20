@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ControlLabel } from 'react-bootstrap';
-import { Form, Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router';
 import { IconButton } from '../../components/IconButton/IconButton';
 
@@ -65,13 +65,15 @@ Login.propTypes = {};
 // decorate the form component
 const LoginForm = reduxForm({
   form: 'login',
-  validate: (values) => {
-    const errors = {};
-    if (!values.email) errors.email = 'Email is required';
-    if (!values.password) errors.password = 'Password is required';
-
-    return errors;
-  },
+  // validate: (values) => {
+  //
+  //   values.toJS();
+  //   const errors = {};
+  //   if (!values.email) errors.email = 'Email is required';
+  //   if (!values.password) errors.password = 'Password is required';
+  //
+  //   return errors;
+  // },
 })(Login);
 
 export default connect()(LoginForm);

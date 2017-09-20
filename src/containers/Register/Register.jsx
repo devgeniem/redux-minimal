@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ControlLabel } from 'react-bootstrap';
-import { Form, Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { IconButton } from '../../components/IconButton/IconButton';
 import './register.scss';
 import * as AuthenticationAPI from '../../api/authenticationApi';
@@ -16,6 +16,7 @@ class Register extends React.Component {
   }
 
   handleFormSubmit(user) {
+    console.log(user)
     this.props.dispatch(AuthenticationAPI.register(user));
   }
 
@@ -72,13 +73,6 @@ Register.defaultProps = {
 // decorate the form component
 const RegisterForm = reduxForm({
   form: 'register',
-  validate: (values) => {
-    const errors = {};
-    if (!values.email) errors.email = 'Email is required';
-    if (!values.password) errors.password = 'Password is required';
-
-    return errors;
-  },
 })(Register);
 
 export default connect()(RegisterForm);

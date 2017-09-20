@@ -1,23 +1,20 @@
-import {combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
-import {reducer as formReducer} from 'redux-form';
-import usersReducer from './users';
-import authenticationReducer from './authentication';
+import { combineReducers } from 'redux-immutable';
+import Immutable  from 'immutable';
+import { reducer as formReducer } from 'redux-form/immutable';
+import usersReducer from './usersReducer';
+import authenticationReducer from './authReducer';
+import routerReducer from './routerReducer';
 
 // main reducers
-export const reducers = combineReducers({
-  form: formReducer.plugin({
-    user_edit: (state, action) => {
-      // reset form (wipe state) when navigating away from the User edit page
-      switch (action.type) {
-        case '@@router/LOCATION_CHANGE':
-          return undefined;
-        default:
-          return state;
-      }
-    },
-  }),
+console.log('before', Immutable);
+const StateRecord = Immutable.Record({
+  users: {
+    all: [],
+  },
+});
+export const rootReducer = combineReducers({
+  form: formReducer,
   routing: routerReducer,
   users: usersReducer,
   authentication: authenticationReducer,
-});
+}, StateRecord);

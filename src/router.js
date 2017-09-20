@@ -19,6 +19,7 @@ const checkAuth = (nextState, replace) => {
   }
 };
 
+
 // build the router
 const router = (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>

@@ -1,13 +1,14 @@
 import Axios from 'axios';
-import {browserHistory} from 'react-router';
-import * as userActions from '../actions/users';
+import { browserHistory } from 'react-router';
+import * as userActions from '../actions/usersActions';
 
 const baseURL = 'http://localhost:8080';
 const API = `${baseURL}/user/`;
 
-export const updateUser = (user) => {
+export const updateUser = (userMap) => {
+  const user = userMap.toJS();
   return (dispatch) => {
-    const {name, profilePic, id} = user;
+    const { name, profilePic, id } = user;
     const formData = new FormData();
 
     if (name) formData.append('name', name);
