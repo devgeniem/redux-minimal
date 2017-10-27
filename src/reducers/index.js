@@ -12,9 +12,12 @@ const StateRecord = Immutable.Record({
     all: [],
   },
 });
-export const rootReducer = combineReducers({
+
+const rootReducer = combineReducers({
   form: formReducer,
   routing: routerReducer,
   users: usersReducer,
   authentication: authenticationReducer,
 }, StateRecord);
+
+export default rootReducer;

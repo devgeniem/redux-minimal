@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-module.exports = require('./webpack.config.js');    // inherit from the main config file
+module.exports = require('./webpack.config.js');
 
 // disable the hot reload
 module.exports.entry = [
@@ -17,8 +18,6 @@ module.exports.module.rules[1] = {
   }),
 };
 
-module.exports.plugins.push(
-  new ExtractTextPlugin({
-    filename: '../css/main.css',
-  }) //eslint-disable-line
-);
+module.exports.plugins.push(new ExtractTextPlugin({
+  filename: 'css/main.css',
+}));

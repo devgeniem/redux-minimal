@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 import Immutable from 'immutable';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-
 import freeze from 'redux-freeze';
 import { rootReducer } from './reducers/index';
 

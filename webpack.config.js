@@ -15,9 +15,8 @@ module.exports = {
     path.join(__dirname, appRoot, 'index.jsx'),
   ],
   output: {
-    path: path.join(__dirname, 'public/js'),
-    publicPath: 'js/',
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'public'),
+    filename: path.join('js/bundle.js'),
   },
   module: {
     rules: [
@@ -27,7 +26,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        // https://github.com/jtangelder/sass-loader
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
@@ -50,7 +48,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
   },
-  devtool: '#eval-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
       root: path.join(__dirname, '/public'),
