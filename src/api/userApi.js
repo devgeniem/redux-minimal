@@ -25,26 +25,18 @@ export const updateUser = (userMap) => {
   };
 };
 
-export const deleteUser = (userId) => {
-  return (dispatch) => {
-    return Axios.delete(`http://localhost:8080/user/${userId}/`, {
-      withCredentials: true,
-    }).then((response) => {
-      dispatch(userActions.deleteUserSuccess(response.data));
-    }).catch((error) => {
-      throw new Error(error);
-    });
-  };
-};
+export const deleteUser = userId => dispatch => Axios.delete(`http://localhost:8080/user/${userId}/`, {
+  withCredentials: true,
+}).then((response) => {
+  dispatch(userActions.deleteUserSuccess(response.data));
+}).catch((error) => {
+  throw new Error(error);
+});
 
-export const fetchUsers = () => {
-  return (dispatch) => {
-    return Axios.get('http://localhost:8080/user', {
-      withCredentials: true,
-    }).then((response) => {
-      dispatch(userActions.fetchUsersSuccess(response.data));
-    }).catch((error) => {
-      throw new Error(error);
-    });
-  };
-};
+export const fetchUsers = () => dispatch => Axios.get('http://localhost:8080/user', {
+  withCredentials: true,
+}).then((response) => {
+  dispatch(userActions.fetchUsersSuccess(response.data));
+}).catch((error) => {
+  throw new Error(error);
+});

@@ -9,7 +9,6 @@ import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
 
 const checkAuth = (nextState, replace) => {
-
   const authenticated = localStorage.getItem('loggedIn');
   if (!authenticated) {
     replace({

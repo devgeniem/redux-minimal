@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutable';
-import Immutable  from 'immutable';
+import Immutable from 'immutable';
 import { reducer as formReducer } from 'redux-form/immutable';
 import usersReducer from './usersReducer';
 import authenticationReducer from './authReducer';

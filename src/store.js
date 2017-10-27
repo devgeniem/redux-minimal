@@ -23,7 +23,7 @@ const initialState = Immutable.Map();
 // create the store
 const store = createStore(rootReducer, initialState, middleware);
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState (state) {
+  selectLocationState(state) {
     return state.get('routing').toJS();
   },
 });
