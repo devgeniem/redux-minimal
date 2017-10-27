@@ -4,6 +4,8 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = require('./webpack.config.js');
 
+module.exports.devtool = 'source-map';
+
 // disable the hot reload
 module.exports.entry = [
   'babel-polyfill',
@@ -19,6 +21,7 @@ module.exports.plugins.push(new webpack.DefinePlugin({
 
 // compress the js file
 module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin({
+  sourceMap: true,
   comments: false,
   compressor: {
     warnings: false,
@@ -35,5 +38,5 @@ module.exports.module.rules[1] = {
 };
 
 module.exports.plugins.push(new ExtractTextPlugin({
-  filename: '../css/main.css',
+  filename: 'css/main.css',
 }));
