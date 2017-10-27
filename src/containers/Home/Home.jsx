@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import UserList from '../UserList/UserList';
+import { translate } from 'react-i18next';
 
 class Home extends React.Component {
 

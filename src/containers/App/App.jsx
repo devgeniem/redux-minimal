@@ -20,7 +20,10 @@ class App extends React.Component { //eslint-disable-line
 
   componentWillMount() {
     const authenticated = localStorage.getItem('loggedIn');
-    if (authenticated) this.props.dispatch(UserAPI.fetchUsers());
+    if (authenticated) {
+      this.props.dispatch(AuthenticationAPI.getSession());
+      this.props.dispatch(UserAPI.fetchUsers());
+    }
   }
 
   handleLogoutClick() {
