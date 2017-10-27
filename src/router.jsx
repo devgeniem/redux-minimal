@@ -9,7 +9,6 @@ import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
 
 const checkAuth = (nextState, replace) => {
-
   const authenticated = localStorage.getItem('loggedIn');
   if (!authenticated) {
     replace({
@@ -21,7 +20,7 @@ const checkAuth = (nextState, replace) => {
 
 
 // build the router
-const router = (
+export default (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} onEnter={checkAuth} />
@@ -33,5 +32,3 @@ const router = (
     </Route>
   </Router>
 );
-
-export { router };

@@ -7,6 +7,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
 } from '../actions/authActions';
+
 const initialState = Immutable.fromJS({});
 
 export default function authentication(state = initialState, action) {
@@ -24,4 +25,4 @@ export default function authentication(state = initialState, action) {
     default:
       return state;
   }
-};
+}
