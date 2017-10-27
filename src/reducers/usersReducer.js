@@ -23,7 +23,8 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         all: state.all.map(
-          user => (user.id === action.user.id) ? action.user : user),
+          user => (user.id === action.user.id ? action.user : user),
+        ),
       };
     case CREATE_USER_SUCCESS:
       return state;

@@ -6,7 +6,6 @@ import authenticationReducer from './authReducer';
 import routerReducer from './routerReducer';
 
 // main reducers
-console.log('before', Immutable);
 const StateRecord = Immutable.Record({
   users: {
     all: [],
