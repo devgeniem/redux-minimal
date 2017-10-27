@@ -44,7 +44,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
   },
-  devtool: 'eval-source-map',
   plugins: [
     new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
       root: path.join(__dirname, '/public'),

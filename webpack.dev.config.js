@@ -4,6 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = require('./webpack.config.js');
 
+module.exports.devtool = 'eval-source-map';
+
 // disable the hot reload
 module.exports.entry = [
   'babel-polyfill',
