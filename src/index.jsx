@@ -15,7 +15,7 @@ ReactDOM.render(
   <I18nextProvider i18n={getI18n(langState.lang)}>
     <Provider store={store}>
       {router}
-    </Provider>,
+    </Provider>
   </I18nextProvider>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );
