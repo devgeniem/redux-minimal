@@ -20,13 +20,13 @@ export const login = (mappedUser) => {
 export const register = (userMap) => {
   const user = userMap.toJS();
   return dispatch => Axios.post('http://localhost:8080/register', user)
-      .then((response) => {
-        dispatch(userActions.createUserSuccess(response.data));
-        browserHistory.push('/login');
-      })
-      .catch((error) => {
-        dispatch(userActions.createUserFail(error));
-      });
+    .then((response) => {
+      dispatch(userActions.createUserSuccess(response.data));
+      browserHistory.push('/login');
+    })
+    .catch((error) => {
+      dispatch(userActions.createUserFail(error));
+    });
 };
 
 export const logout = () => dispatch => Axios.post('http://localhost:8080/logout', null, {
