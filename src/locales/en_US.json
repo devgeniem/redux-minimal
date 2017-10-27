@@ -1,5 +1,10 @@
 {
   "Home": {
     "UserListEmpty": "User list emptyish"
+  },
+  "Login": {
+    "Password": "Password",
+    "Email": "Email",
+    "Register": "Register"
   }
 }
