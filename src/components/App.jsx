@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../stylesheets/main.scss';
 
-export default class App extends React.Component { //eslint-disable-line
+export default class App extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  }
+
   render() {
     return (
       <div className="container">
@@ -11,8 +15,3 @@ export default class App extends React.Component { //eslint-disable-line
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-

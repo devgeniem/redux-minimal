@@ -11,6 +11,7 @@ module.exports = {
     },
     "parser": "babel-eslint",
     "rules": {
-        "strict": 0
-    }
+        "strict": 0,
+        "react/prefer-stateless-function": 0
+    },
 };
