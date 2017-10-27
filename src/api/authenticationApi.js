@@ -38,3 +38,11 @@ export const logout = () => dispatch => Axios.post('http://localhost:8080/logout
 }).catch((error) => {
   throw new Error(error);
 });
+
+export const getSession = () => Axios.post('http://localhost:8080/session', null, {
+  withCredentials: true,
+}).then((res) => {
+  console.log(res);
+}).catch((err) => {
+  console.log(err);
+});

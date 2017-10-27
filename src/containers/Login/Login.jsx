@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { ControlLabel } from 'react-bootstrap';
 import { Form, Field, reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router';
@@ -26,17 +27,17 @@ class Login extends React.Component {
   }
 
   render() {
-    const { handleSubmit, errorMsg } = this.props;
+    const { handleSubmit, errorMsg, t } = this.props;
 
     return (
       <div className="login-container">
         {(errorMsg) ? <div className="error">{errorMsg}</div> : null}
 
         <Form onSubmit={handleSubmit(this.handleLoginSubmit)}>
-          <ControlLabel htmlFor="email">Email</ControlLabel>
+          <ControlLabel htmlFor="email">{t('Email')}</ControlLabel>
           <Field className="form-control" component="input" name="email" />
           <br />
-          <ControlLabel htmlFor="password">Password</ControlLabel>
+          <ControlLabel htmlFor="password">{t('Password')}</ControlLabel>
           <Field
             className="form-control"
             component="input"
@@ -51,7 +52,7 @@ class Login extends React.Component {
           />
 
           <br /><br />
-          <Link to={'/register'}>Register</Link>
+          <Link to={'/register'}>{t('Register')}</Link>
         </Form>
       </div>
     );
@@ -63,11 +64,14 @@ Login.defaultProps = {
     return null;
   },
   errorMsg: null,
+  t: null,
 };
+
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
   errorMsg: PropTypes.string,
+  t: PropTypes.func,
 };
 
 // decorate the form component
@@ -82,4 +86,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(mapStateToProps)(translate('Login')(LoginForm));
