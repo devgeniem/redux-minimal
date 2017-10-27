@@ -35,5 +35,5 @@ module.exports.module.rules[1] = {
 };
 
 module.exports.plugins.push(new ExtractTextPlugin({
-  filename: '../css/main.css',
+  filename: 'css/main.css',
 }));

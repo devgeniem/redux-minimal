@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = require('./webpack.config.js');
 
 // disable the hot reload
@@ -17,6 +18,8 @@ module.exports.module.rules[1] = {
     use: ['css-loader', 'sass-loader'],
   }),
 };
+
+module.exports.plugins.push(new WebpackNotifierPlugin());
 
 module.exports.plugins.push(new ExtractTextPlugin({
   filename: 'css/main.css',
